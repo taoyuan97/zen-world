@@ -12,6 +12,9 @@ export interface HillEnv {
   sky: 'day' | 'night' | 'sunset';
   decor: string[];
   particles: 'leaves' | 'fireflies' | 'snow' | 'petals' | 'steam' | 'none';
+  /** 可选雾距（M3 决策 D2）：缺省 26/85，雾谷等浓雾主题可调近。 */
+  fogNear?: number;
+  fogFar?: number;
 }
 
 export interface HillTeacher {

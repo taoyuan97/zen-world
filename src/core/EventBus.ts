@@ -23,7 +23,12 @@ export class EventBus {
 
   emit<K extends keyof EventMap>(event: K, payload: EventMap[K]): void {
     this.handlers.get(event)?.forEach((fn) => {
-      (fn as Handler<EventMap[K]>)(payload);
+      try {
+        (fn as Handler<EventMap[K]>)(payload);
+      } catch (err) {
+        // 单个监听者异常不阻断事件链（ISSUE-M2-001 F1）
+        console.error(`[EventBus] handler error on "${String(event)}"`, err);
+      }
     });
   }
 }

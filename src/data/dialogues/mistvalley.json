@@ -1,0 +1,35 @@
+{
+  "hillId": "mistvalley",
+  "teacher": "雾隐",
+  "blessing": "雾没有散，但你已经不怕它了。",
+  "nodes": [
+    {
+      "id": "greeting",
+      "text": "不急。雾里走路，快也没有用。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "text": "你现在的心里，有没有看不清的事？",
+      "options": [
+        { "label": "有，看不清前面的路", "reply": "r1" },
+        { "label": "有，看不清自己的心", "reply": "r2" }
+      ]
+    },
+    {
+      "id": "r1",
+      "text": "看不清路，就看清脚下这一步。一步，就够了。",
+      "next": "invite"
+    },
+    {
+      "id": "r2",
+      "text": "心不急着看清。雾里的山，也还是山。",
+      "next": "invite"
+    },
+    {
+      "id": "invite",
+      "text": "坐吧。我们不散雾，我们陪雾坐一会儿。",
+      "action": "start_meditation"
+    }
+  ]
+}

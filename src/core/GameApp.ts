@@ -45,9 +45,14 @@ export class GameApp {
     }
 
     if (this.scenes) {
-      this.scenes.update(dt);
-      const active = this.scenes.active;
-      if (active) this.renderer.render(active.scene, active.camera);
+      // 单帧异常不杀死渲染循环（ISSUE-M2-001 F2）
+      try {
+        this.scenes.update(dt);
+        const active = this.scenes.active;
+        if (active) this.renderer.render(active.scene, active.camera);
+      } catch (err) {
+        console.error('[GameApp] frame error', err);
+      }
     }
   };
 

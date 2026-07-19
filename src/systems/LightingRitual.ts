@@ -29,6 +29,19 @@ export class LightingRitual {
 
   play(stage: RitualStage, theme: HillConfig): Promise<void> {
     return new Promise((resolve) => {
+      // 异常兜底：任何一步失败都清理并 resolve，绝不悬挂完成流程（ISSUE-M2-001 F5）
+      try {
+        this.playInner(stage, theme, resolve);
+      } catch (err) {
+        console.error('[LightingRitual] play error', err);
+        stage.setInputLocked(false);
+        resolve();
+      }
+    });
+  }
+
+  private playInner(stage: RitualStage, theme: HillConfig, resolve: () => void): void {
+    {
       stage.setInputLocked(true);
       const anchor = stage.teacherAnchor();
       const disposables: Array<{ dispose(): void }> = [];
@@ -161,7 +174,7 @@ export class LightingRitual {
           },
         });
       });
-    });
+    }
   }
 }
 

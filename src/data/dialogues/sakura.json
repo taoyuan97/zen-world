@@ -1,0 +1,35 @@
+{
+  "hillId": "sakura",
+  "teacher": "花见",
+  "blessing": "花瓣会落完，但你来过的这一刻，不会消失。",
+  "nodes": [
+    {
+      "id": "greeting",
+      "text": "你来得正好。樱花开到这一秒，就是为你开的。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "text": "这一片花瓣落在你肩上。它让你想起了什么？",
+      "options": [
+        { "label": "想起留不住的美好", "reply": "r1" },
+        { "label": "想起还想再见的人", "reply": "r2" }
+      ]
+    },
+    {
+      "id": "r1",
+      "text": "留不住，才珍贵。它落过，你的世界就美过一次。",
+      "next": "invite"
+    },
+    {
+      "id": "r2",
+      "text": "把想念轻轻收好。此刻，先替他们看看这片花。",
+      "next": "invite"
+    },
+    {
+      "id": "invite",
+      "text": "一期一会。这一次坐下，也只有一次。来吧。",
+      "action": "start_meditation"
+    }
+  ]
+}

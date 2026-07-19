@@ -1,0 +1,35 @@
+{
+  "hillId": "desert",
+  "teacher": "无尘",
+  "blessing": "你留下的空，沙会替你守着。",
+  "nodes": [
+    {
+      "id": "greeting",
+      "text": "你来了。这里没什么可看的。够了。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "text": "放下一样东西。是什么？",
+      "options": [
+        { "label": "放不下的念头", "reply": "r1" },
+        { "label": "攒了很久的疲惫", "reply": "r2" }
+      ]
+    },
+    {
+      "id": "r1",
+      "text": "念头握在手里是东西。放下，就是沙。",
+      "next": "invite"
+    },
+    {
+      "id": "r2",
+      "text": "沙不喊累。空了，就不累了。",
+      "next": "invite"
+    },
+    {
+      "id": "invite",
+      "text": "坐。看日落。什么都不用做。",
+      "action": "start_meditation"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "hillId": "snowpeak",
+  "teacher": "雪寂",
+  "blessing": "雪把今天的声音，都轻轻盖住了。",
+  "nodes": [
+    {
+      "id": "greeting",
+      "text": "轻一点。你来了。雪落的时候，是没有声音的。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "text": "此刻，你心里装着什么？",
+      "options": [
+        { "label": "装着很多杂念", "reply": "r1" },
+        { "label": "装着放不下的事", "reply": "r2" }
+      ]
+    },
+    {
+      "id": "r1",
+      "text": "嗯。杂念是雪。落在山顶，不扫，它自己会停。",
+      "next": "invite"
+    },
+    {
+      "id": "r2",
+      "text": "嗯。放不下的，先放在雪里。雪很轻，什么都能托住。",
+      "next": "invite"
+    },
+    {
+      "id": "invite",
+      "text": "坐。轻一点。像雪一样，慢慢落下来。",
+      "action": "start_meditation"
+    }
+  ]
+}

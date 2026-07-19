@@ -83,15 +83,21 @@ export class MeditationSession {
 
   private tick(): void {
     if (!this.isActive || !this.script) return;
-    this.timeline.tick();
-    const elapsed = this.timeline.elapsed;
-    this.bus.emit('meditation:progress', { elapsed, duration: this.script.duration });
-    if (elapsed >= this.script.duration) {
-      this.completed = true;
-      const seconds = this.script.duration;
-      this.teardown();
-      this.bus.emit('meditation:complete', { hillId: this.hillId, seconds });
-      this.onComplete?.();
+    // try/catch 保底：任何下游异常都不能阻断完成判定（ISSUE-M2-001 F3）
+    try {
+      this.timeline.tick();
+      const elapsed = this.timeline.elapsed;
+      this.bus.emit('meditation:progress', { elapsed, duration: this.script.duration });
+      if (elapsed >= this.script.duration) {
+        this.completed = true;
+        const seconds = this.script.duration;
+        console.info(`[MeditationSession] complete @${elapsed.toFixed(2)}s / ${seconds}s`);
+        this.teardown();
+        this.bus.emit('meditation:complete', { hillId: this.hillId, seconds });
+        this.onComplete?.();
+      }
+    } catch (err) {
+      console.error('[MeditationSession] tick error', err);
     }
   }
 

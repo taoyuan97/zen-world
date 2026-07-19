@@ -88,7 +88,7 @@ export function validateHills(raw: unknown): HillConfig[] {
     console.error('[validate] hills.json 校验失败:', errors);
     throw new Error(`hills.json 校验失败（${errors.length} 项），详见控制台`);
   }
-  if (import.meta.env.DEV) {
+  if (import.meta.env?.DEV) {
     console.info(`[validate] hills.json 通过（${hills.length} 座山，内容文件存在性待 M2/M3 校验）`);
   }
   return hills;

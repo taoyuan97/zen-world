@@ -1,0 +1,35 @@
+{
+  "hillId": "starfield",
+  "teacher": "星野",
+  "blessing": "今夜你坐过的这片星空，会一直为你留着。",
+  "nodes": [
+    {
+      "id": "greeting",
+      "text": "你看，星星不说话，却一直在回答。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "text": "抬起头的时候，你觉得自己是大，还是小？",
+      "options": [
+        { "label": "小，像一粒尘埃", "reply": "r1" },
+        { "label": "大，像能装下整片夜空", "reply": "r2" }
+      ]
+    },
+    {
+      "id": "r1",
+      "text": "尘埃也有星光落在上面。小，不等于微不足道。",
+      "next": "invite"
+    },
+    {
+      "id": "r2",
+      "text": "那就对了。能装下夜空的，本来就是你自己。",
+      "next": "invite"
+    },
+    {
+      "id": "invite",
+      "text": "坐好吧。让星星陪你，把这一口气，吐得很长很长。",
+      "action": "start_meditation"
+    }
+  ]
+}

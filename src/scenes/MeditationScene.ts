@@ -100,7 +100,7 @@ export class MeditationScene implements IScene, RitualStage {
 
     // ---- 主题应用：雾 / 灯光 / 环境 ----
     this.scene3.background = new THREE.Color(hill.env.fog);
-    this.scene3.fog = new THREE.Fog(hill.env.fog, 26, 85);
+    this.scene3.fog = new THREE.Fog(hill.env.fog, hill.env.fogNear ?? 26, hill.env.fogFar ?? 85);
     const ambient = new THREE.AmbientLight('#ffffff', 0.85);
     const sun = new THREE.DirectionalLight('#fff3dd', 1.5);
     sun.position.set(12, 22, 10);
@@ -290,7 +290,17 @@ export class MeditationScene implements IScene, RitualStage {
       total: this.deps.save.data.hills ? Object.keys(this.deps.save.data.hills).length : 10,
     });
 
-    await this.ritual.play(this, this.hill);
+    // 演出异常/超时兜底：保证完成页一定可达（ISSUE-M2-001 F4）
+    const RITUAL_TIMEOUT_MS = 8000;
+    try {
+      await Promise.race([
+        this.ritual.play(this, this.hill),
+        new Promise<void>((resolve) => window.setTimeout(resolve, RITUAL_TIMEOUT_MS)),
+      ]);
+    } catch (err) {
+      console.error('[MeditationScene] ritual error', err);
+    }
+    this.setInputLocked(false);
     if (this.state !== 'ritual') return;
     this.state = 'done';
     this.deps.bus.emit('ritual:done', { hillId: this.hill.id });

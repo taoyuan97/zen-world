@@ -24,7 +24,7 @@
     "name": "镜湖畔",
     "mapPosition": [0, 0, 30],
     "palette": { "primary": "#6FA8C7", "accent1": "#3E6E8E", "accent2": "#CFE8F5" },
-    "env": { "fog": "#B9D2DE", "sky": "day", "decor": ["reed", "stone_lantern"], "particles": "fireflies" },
+    "env": { "fog": "#B9D2DE", "sky": "day", "decor": ["reed", "stone_lantern", "water_glint"], "particles": "fireflies" },
     "teacher": { "name": "涟漪", "color": "#3E6E8E", "prop": "tea_bowl" },
     "dialogue": "dialogues/lakeside.json",
     "meditations": { "5": "meditations/lakeside.5min.json", "10": "meditations/lakeside.10min.json" }
@@ -44,7 +44,7 @@
     "name": "寂静沙漠",
     "mapPosition": [-60, 0, 15],
     "palette": { "primary": "#D9B380", "accent1": "#A67C52", "accent2": "#F2DFC0" },
-    "env": { "fog": "#E3CFA8", "sky": "sunset", "decor": ["dry_tree", "rock"], "particles": "none" },
+    "env": { "fog": "#E3CFA8", "sky": "sunset", "decor": ["dry_tree", "rock", "dune"], "particles": "none" },
     "teacher": { "name": "无尘", "color": "#A67C52", "prop": "wooden_fish" },
     "dialogue": "dialogues/desert.json",
     "meditations": { "5": "meditations/desert.5min.json", "10": "meditations/desert.10min.json" }
@@ -64,7 +64,7 @@
     "name": "雾谷",
     "mapPosition": [-20, 0, 55],
     "palette": { "primary": "#A8B0B5", "accent1": "#6E787E", "accent2": "#DDE3E6" },
-    "env": { "fog": "#C3CBCF", "sky": "day", "decor": ["pine", "rock"], "particles": "none" },
+    "env": { "fog": "#C3CBCF", "sky": "day", "decor": ["pine", "rock"], "particles": "none", "fogNear": 9, "fogFar": 46 },
     "teacher": { "name": "雾隐", "color": "#6E787E", "prop": "walking_stick" },
     "dialogue": "dialogues/mistvalley.json",
     "meditations": { "5": "meditations/mistvalley.5min.json", "10": "meditations/mistvalley.10min.json" }
