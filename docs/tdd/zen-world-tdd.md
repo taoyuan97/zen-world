@@ -380,7 +380,7 @@ class LightingRitual {
 | M1 地图原型 | §3 脚手架、§4.1~4.5 核心层、`TerrainBuilder`/`HillFactory`、OrbitControls、拾取+Tooltip、SaveSystem 读写、亮/暗双态渲染、`ui:progress` |
 | M2 单场景闭环 | MeditationScene 模板 + 青竹林主题、TeacherRig、三段机位、DialogueSystem、MeditationSession+Timeline、MeditationHud、LightingRitual、完成页、中断确认 |
 | M3 内容铺开 | 9 套主题配置 + 装饰实例化、全部 JSON 剧本/引导词、校验器完备、重复冥想累计 |
-| M4 打磨 | AudioManager（Howler）+ TTS cue 同步、10/10 全局演出、粒子增强、移动端触摸评估、性能优化 |
+| M4 打磨 | AudioManager（Howler）+ TTS cue 同步、10/10 全局演出、粒子增强、移动端触摸评估、性能优化（✅ 2026-07-20 完成） |
 
 ## 12. 技术风险与对策
 

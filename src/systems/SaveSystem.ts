@@ -59,6 +59,7 @@ export class SaveSystem {
       data.stats = {
         totalSessions: parsed.stats?.totalSessions ?? 0,
         totalSeconds: parsed.stats?.totalSeconds ?? 0,
+        finaleSeen: !!parsed.stats?.finaleSeen,
       };
       data.settings = {
         muted: !!parsed.settings?.muted,
@@ -123,6 +124,12 @@ export class SaveSystem {
 
   setOnboardingSeen(): void {
     this._data.settings.onboardingSeen = true;
+    this.scheduleWrite();
+  }
+
+  /** M4：10/10 全局演出只播一次。 */
+  setFinaleSeen(): void {
+    this._data.stats.finaleSeen = true;
     this.scheduleWrite();
   }
 

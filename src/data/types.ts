@@ -44,7 +44,12 @@ export interface HillSave {
 export interface SaveData {
   version: 1;
   hills: Record<string, HillSave>;
-  stats: { totalSessions: number; totalSeconds: number };
+  stats: {
+    totalSessions: number;
+    totalSeconds: number;
+    /** M4：10/10 全局演出是否已播放过（只播一次）。 */
+    finaleSeen?: boolean;
+  };
   settings: { muted: boolean; onboardingSeen: boolean };
 }
 
@@ -62,6 +67,8 @@ export interface DialogueScript {
   teacher: string;
   blessing?: string; // 完成页赠言
   nodes: DialogueNode[]; // 首个节点为入口
+  /** M4 古寺彩蛋：10/10 点亮后回访古寺时替代 nodes 使用（首个节点为入口）。 */
+  easterEgg?: DialogueNode[];
 }
 
 // —— 冥想引导脚本（TDD 附录 A）——
@@ -87,15 +94,16 @@ export interface EventMap {
   'debug:time-scale': { scale: number }; // 冥想计时加速（仅 ?debug）
   // —— M2：对话 / 冥想会话 / 点亮演出 ——
   'dialogue:action': { action: string };
-  'meditation:cue': { text: string };
+  'meditation:cue': { text: string; index: number };
   'meditation:progress': { elapsed: number; duration: number };
   'meditation:paused-auto': Record<string, never>;
   'meditation:resumed': Record<string, never>;
   'meditation:abort-request': Record<string, never>; // UI→系统：请求中断确认
   'meditation:abort-confirmed': Record<string, never>; // 确认框→场景：执行中断
   'meditation:aborted': Record<string, never>; // 场景→App：中断完成，返回地图
-  'meditation:duration-chosen': { minutes: 5 | 10 }; // 时长面板→场景
+  'meditation:duration-chosen': { minutes: 5 | 10 | 'free' }; // 时长面板→场景（M4 free=不限时）
   'meditation:duration-cancelled': Record<string, never>; // 时长面板取消→场景
   'meditation:complete': { hillId: string; seconds: number };
   'ritual:done': { hillId: string };
+  'finale:go-temple': Record<string, never>; // M4 终局面板→主流程：前往古寺彩蛋
 }

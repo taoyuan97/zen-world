@@ -1,0 +1,2006 @@
+{
+  "voiceId": "05Cdh2gw2NMzDvykn1nm",
+  "entries": [
+    {
+      "hillId": "bamboo",
+      "minutes": 5,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/bamboo/5m00.mp3",
+      "ok": true,
+      "duration": 3.86
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 5,
+      "index": 1,
+      "t": 20,
+      "text": "感受身体和座位接触的地方，让重量慢慢沉下去。",
+      "file": "audio/voice/bamboo/5m01.mp3",
+      "ok": true,
+      "duration": 4.39
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 5,
+      "index": 2,
+      "t": 45,
+      "text": "注意你的呼吸。不需要改变它，只是看着它。",
+      "file": "audio/voice/bamboo/5m02.mp3",
+      "ok": true,
+      "duration": 4.3
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 5,
+      "index": 3,
+      "t": 90,
+      "text": "吸气时，知道自己在吸气；呼气时，知道自己在呼气。",
+      "file": "audio/voice/bamboo/5m03.mp3",
+      "ok": true,
+      "duration": 5.71
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 5,
+      "index": 4,
+      "t": 150,
+      "text": "如果走神了，没关系。发现走神的那一刻，就是回来的一刻。",
+      "file": "audio/voice/bamboo/5m04.mp3",
+      "ok": true,
+      "duration": 5.33
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 5,
+      "index": 5,
+      "t": 210,
+      "text": "想象风穿过竹林，念头也像风一样，来了，又会走。",
+      "file": "audio/voice/bamboo/5m05.mp3",
+      "ok": true,
+      "duration": 5.16
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 5,
+      "index": 6,
+      "t": 270,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/bamboo/5m06.mp3",
+      "ok": true,
+      "duration": 4.15
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 5,
+      "index": 7,
+      "t": 295,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/bamboo/5m07.mp3",
+      "ok": true,
+      "duration": 3.19
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 10,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/bamboo/10m00.mp3",
+      "ok": true,
+      "duration": 3.82
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 10,
+      "index": 1,
+      "t": 25,
+      "text": "感受身体和座位接触的地方，让重量慢慢沉下去。",
+      "file": "audio/voice/bamboo/10m01.mp3",
+      "ok": true,
+      "duration": 4.78
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 10,
+      "index": 2,
+      "t": 60,
+      "text": "从头到脚，慢慢放松。额头、肩膀、手心，都松下来。",
+      "file": "audio/voice/bamboo/10m02.mp3",
+      "ok": true,
+      "duration": 6.46
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 10,
+      "index": 3,
+      "t": 100,
+      "text": "注意你的呼吸。不需要改变它，只是看着它。",
+      "file": "audio/voice/bamboo/10m03.mp3",
+      "ok": true,
+      "duration": 4.3
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 10,
+      "index": 4,
+      "t": 160,
+      "text": "吸气时，知道自己在吸气；呼气时，知道自己在呼气。",
+      "file": "audio/voice/bamboo/10m04.mp3",
+      "ok": true,
+      "duration": 5.3
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 10,
+      "index": 5,
+      "t": 230,
+      "text": "给呼吸数个数。吸气，一；呼气，二。数到十，再从一开始。",
+      "file": "audio/voice/bamboo/10m05.mp3",
+      "ok": true,
+      "duration": 8.4
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 10,
+      "index": 6,
+      "t": 300,
+      "text": "如果走神了，没关系。发现走神的那一刻，就是回来的一刻。",
+      "file": "audio/voice/bamboo/10m06.mp3",
+      "ok": true,
+      "duration": 5.28
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 10,
+      "index": 7,
+      "t": 370,
+      "text": "想象风穿过竹林，念头也像风一样，来了，又会走。",
+      "file": "audio/voice/bamboo/10m07.mp3",
+      "ok": true,
+      "duration": 5.16
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 10,
+      "index": 8,
+      "t": 440,
+      "text": "回到身体。听一听周围的声音，远的，近的，都只是声音。",
+      "file": "audio/voice/bamboo/10m08.mp3",
+      "ok": true,
+      "duration": 6.53
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 10,
+      "index": 9,
+      "t": 510,
+      "text": "感受此刻的安静，像竹根扎进土里，稳稳的。",
+      "file": "audio/voice/bamboo/10m09.mp3",
+      "ok": true,
+      "duration": 4.3
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 10,
+      "index": 10,
+      "t": 560,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/bamboo/10m10.mp3",
+      "ok": true,
+      "duration": 4.2
+    },
+    {
+      "hillId": "bamboo",
+      "minutes": 10,
+      "index": 11,
+      "t": 592,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/bamboo/10m11.mp3",
+      "ok": true,
+      "duration": 3.19
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 5,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/snowpeak/5m00.mp3",
+      "ok": true,
+      "duration": 3.86
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 5,
+      "index": 1,
+      "t": 20,
+      "text": "感受身体和座位接触的地方，让重量慢慢沉下去。",
+      "file": "audio/voice/snowpeak/5m01.mp3",
+      "ok": true,
+      "duration": 4.37
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 5,
+      "index": 2,
+      "t": 45,
+      "text": "注意你的呼吸。轻一点，像雪落在雪上。",
+      "file": "audio/voice/snowpeak/5m02.mp3",
+      "ok": true,
+      "duration": 4.3
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 5,
+      "index": 3,
+      "t": 90,
+      "text": "吸气时，知道自己在吸气；呼气时，知道自己在呼气。",
+      "file": "audio/voice/snowpeak/5m03.mp3",
+      "ok": true,
+      "duration": 5.18
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 5,
+      "index": 4,
+      "t": 150,
+      "text": "念头来了，把它想成一片雪。落在地上，就化了。",
+      "file": "audio/voice/snowpeak/5m04.mp3",
+      "ok": true,
+      "duration": 4.58
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 5,
+      "index": 5,
+      "t": 210,
+      "text": "你坐在云海之上。白茫茫的一片，什么都不用拿。",
+      "file": "audio/voice/snowpeak/5m05.mp3",
+      "ok": true,
+      "duration": 4.54
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 5,
+      "index": 6,
+      "t": 270,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/snowpeak/5m06.mp3",
+      "ok": true,
+      "duration": 4.2
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 5,
+      "index": 7,
+      "t": 292,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/snowpeak/5m07.mp3",
+      "ok": true,
+      "duration": 2.47
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 10,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/snowpeak/10m00.mp3",
+      "ok": true,
+      "duration": 3.86
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 10,
+      "index": 1,
+      "t": 25,
+      "text": "感受身体和座位接触的地方，让重量慢慢沉下去。",
+      "file": "audio/voice/snowpeak/10m01.mp3",
+      "ok": true,
+      "duration": 4.78
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 10,
+      "index": 2,
+      "t": 60,
+      "text": "从头到脚，慢慢放松。额头、肩膀、手心，都松下来。",
+      "file": "audio/voice/snowpeak/10m02.mp3",
+      "ok": true,
+      "duration": 7.44
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 10,
+      "index": 3,
+      "t": 100,
+      "text": "注意你的呼吸。轻一点，像雪落在雪上。",
+      "file": "audio/voice/snowpeak/10m03.mp3",
+      "ok": true,
+      "duration": 4.25
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 10,
+      "index": 4,
+      "t": 160,
+      "text": "吸气时，知道自己在吸气；呼气时，知道自己在呼气。",
+      "file": "audio/voice/snowpeak/10m04.mp3",
+      "ok": true,
+      "duration": 5.74
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 10,
+      "index": 5,
+      "t": 230,
+      "text": "杂念像雪片，一片一片，从很高的地方落下来。",
+      "file": "audio/voice/snowpeak/10m05.mp3",
+      "ok": true,
+      "duration": 4.73
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 10,
+      "index": 6,
+      "t": 300,
+      "text": "不用去扫雪。看着它落，落到地上，就安静了。",
+      "file": "audio/voice/snowpeak/10m06.mp3",
+      "ok": true,
+      "duration": 4.58
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 10,
+      "index": 7,
+      "t": 370,
+      "text": "想象你坐在白雪顶上，四周是云海，白得没有边。",
+      "file": "audio/voice/snowpeak/10m07.mp3",
+      "ok": true,
+      "duration": 4.97
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 10,
+      "index": 8,
+      "t": 440,
+      "text": "没有什么要拿起的，也没有什么要放下的。只是坐着。",
+      "file": "audio/voice/snowpeak/10m08.mp3",
+      "ok": true,
+      "duration": 4.15
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 10,
+      "index": 9,
+      "t": 510,
+      "text": "感受此刻的安静，像大雪之后，世界的无声。",
+      "file": "audio/voice/snowpeak/10m09.mp3",
+      "ok": true,
+      "duration": 4.37
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 10,
+      "index": 10,
+      "t": 560,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/snowpeak/10m10.mp3",
+      "ok": true,
+      "duration": 4.22
+    },
+    {
+      "hillId": "snowpeak",
+      "minutes": 10,
+      "index": 11,
+      "t": 592,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/snowpeak/10m11.mp3",
+      "ok": true,
+      "duration": 3.1
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 5,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/lakeside/5m00.mp3",
+      "ok": true,
+      "duration": 3.86
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 5,
+      "index": 1,
+      "t": 20,
+      "text": "感受身体和座位接触的地方，让重量慢慢沉下去。",
+      "file": "audio/voice/lakeside/5m01.mp3",
+      "ok": true,
+      "duration": 4.78
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 5,
+      "index": 2,
+      "t": 45,
+      "text": "注意你的呼吸。像湖水一样，一起，一伏。",
+      "file": "audio/voice/lakeside/5m02.mp3",
+      "ok": true,
+      "duration": 4.92
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 5,
+      "index": 3,
+      "t": 90,
+      "text": "想象你的心是一片湖面，呼吸是吹过湖面的风。",
+      "file": "audio/voice/lakeside/5m03.mp3",
+      "ok": true,
+      "duration": 5.21
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 5,
+      "index": 4,
+      "t": 150,
+      "text": "情绪来了，像一圈涟漪。看着它升起，看着它散开。",
+      "file": "audio/voice/lakeside/5m04.mp3",
+      "ok": true,
+      "duration": 6.14
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 5,
+      "index": 5,
+      "t": 210,
+      "text": "波纹会平，湖面会静。你不需要做什么，水知道答案。",
+      "file": "audio/voice/lakeside/5m05.mp3",
+      "ok": true,
+      "duration": 5.95
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 5,
+      "index": 6,
+      "t": 270,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/lakeside/5m06.mp3",
+      "ok": true,
+      "duration": 4.25
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 5,
+      "index": 7,
+      "t": 292,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/lakeside/5m07.mp3",
+      "ok": true,
+      "duration": 2.47
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 10,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/lakeside/10m00.mp3",
+      "ok": true,
+      "duration": 3.86
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 10,
+      "index": 1,
+      "t": 25,
+      "text": "感受身体和座位接触的地方，让重量慢慢沉下去。",
+      "file": "audio/voice/lakeside/10m01.mp3",
+      "ok": true,
+      "duration": 4.61
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 10,
+      "index": 2,
+      "t": 60,
+      "text": "从头到脚，慢慢放松。额头、肩膀、手心，都松下来。",
+      "file": "audio/voice/lakeside/10m02.mp3",
+      "ok": true,
+      "duration": 6.41
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 10,
+      "index": 3,
+      "t": 100,
+      "text": "注意你的呼吸。像湖水一样，一起，一伏。",
+      "file": "audio/voice/lakeside/10m03.mp3",
+      "ok": true,
+      "duration": 4.92
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 10,
+      "index": 4,
+      "t": 160,
+      "text": "吸气时，知道自己在吸气；呼气时，知道自己在呼气。",
+      "file": "audio/voice/lakeside/10m04.mp3",
+      "ok": true,
+      "duration": 5.88
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 10,
+      "index": 5,
+      "t": 230,
+      "text": "想象你的心是一片湖面。很宽，很安静，倒映着天光。",
+      "file": "audio/voice/lakeside/10m05.mp3",
+      "ok": true,
+      "duration": 6.07
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 10,
+      "index": 6,
+      "t": 300,
+      "text": "情绪来了，像一圈涟漪。不推开它，也不跟着它走。",
+      "file": "audio/voice/lakeside/10m06.mp3",
+      "ok": true,
+      "duration": 4.82
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 10,
+      "index": 7,
+      "t": 370,
+      "text": "看着它升起，看着它一圈一圈，慢慢散开。",
+      "file": "audio/voice/lakeside/10m07.mp3",
+      "ok": true,
+      "duration": 4.58
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 10,
+      "index": 8,
+      "t": 440,
+      "text": "浪会退，波纹会平。湖水从不动摇，它只是照见。",
+      "file": "audio/voice/lakeside/10m08.mp3",
+      "ok": true,
+      "duration": 5.98
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 10,
+      "index": 9,
+      "t": 510,
+      "text": "感受此刻的安静，像深夜的湖，平得照见星星。",
+      "file": "audio/voice/lakeside/10m09.mp3",
+      "ok": true,
+      "duration": 4.49
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 10,
+      "index": 10,
+      "t": 560,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/lakeside/10m10.mp3",
+      "ok": true,
+      "duration": 4.15
+    },
+    {
+      "hillId": "lakeside",
+      "minutes": 10,
+      "index": 11,
+      "t": 592,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/lakeside/10m11.mp3",
+      "ok": true,
+      "duration": 3.19
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 5,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/starfield/5m00.mp3",
+      "ok": true,
+      "duration": 3.86
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 5,
+      "index": 1,
+      "t": 20,
+      "text": "感受身体和座位接触的地方，让重量慢慢沉下去。",
+      "file": "audio/voice/starfield/5m01.mp3",
+      "ok": true,
+      "duration": 4.39
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 5,
+      "index": 2,
+      "t": 45,
+      "text": "注意你的呼吸。不需要改变它，只是看着它。",
+      "file": "audio/voice/starfield/5m02.mp3",
+      "ok": true,
+      "duration": 4.3
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 5,
+      "index": 3,
+      "t": 90,
+      "text": "想象你坐在高原上。夜空很低，银河就横在头顶。",
+      "file": "audio/voice/starfield/5m03.mp3",
+      "ok": true,
+      "duration": 5.11
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 5,
+      "index": 4,
+      "t": 150,
+      "text": "吸气时，星光落进身体；呼气时，身体亮一点，再亮一点。",
+      "file": "audio/voice/starfield/5m04.mp3",
+      "ok": true,
+      "duration": 6.17
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 5,
+      "index": 5,
+      "t": 210,
+      "text": "你比想象中辽阔。心里能装下的，不止这一片星空。",
+      "file": "audio/voice/starfield/5m05.mp3",
+      "ok": true,
+      "duration": 5.11
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 5,
+      "index": 6,
+      "t": 270,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/starfield/5m06.mp3",
+      "ok": true,
+      "duration": 4.15
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 5,
+      "index": 7,
+      "t": 292,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/starfield/5m07.mp3",
+      "ok": true,
+      "duration": 2.47
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 10,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/starfield/10m00.mp3",
+      "ok": true,
+      "duration": 3.86
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 10,
+      "index": 1,
+      "t": 25,
+      "text": "感受身体和座位接触的地方，让重量慢慢沉下去。",
+      "file": "audio/voice/starfield/10m01.mp3",
+      "ok": true,
+      "duration": 4.73
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 10,
+      "index": 2,
+      "t": 60,
+      "text": "从头到脚，慢慢放松。额头、肩膀、手心，都松下来。",
+      "file": "audio/voice/starfield/10m02.mp3",
+      "ok": true,
+      "duration": 6.5
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 10,
+      "index": 3,
+      "t": 100,
+      "text": "注意你的呼吸。不需要改变它，只是看着它。",
+      "file": "audio/voice/starfield/10m03.mp3",
+      "ok": true,
+      "duration": 4.27
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 10,
+      "index": 4,
+      "t": 160,
+      "text": "吸气时，知道自己在吸气；呼气时，知道自己在呼气。",
+      "file": "audio/voice/starfield/10m04.mp3",
+      "ok": true,
+      "duration": 4.99
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 10,
+      "index": 5,
+      "t": 230,
+      "text": "想象你坐在高原上。夜空很低，星星一颗一颗，就在眼前。",
+      "file": "audio/voice/starfield/10m05.mp3",
+      "ok": true,
+      "duration": 6.0
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 10,
+      "index": 6,
+      "t": 300,
+      "text": "从脚尖到头顶，身体的每一个角落，都像一颗安静的星。",
+      "file": "audio/voice/starfield/10m06.mp3",
+      "ok": true,
+      "duration": 5.42
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 10,
+      "index": 7,
+      "t": 370,
+      "text": "吸气时，星光落进身体；呼气时，身体亮一点，再亮一点。",
+      "file": "audio/voice/starfield/10m07.mp3",
+      "ok": true,
+      "duration": 6.17
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 10,
+      "index": 8,
+      "t": 440,
+      "text": "偶尔走神，就像流星划过。看见了，就让它过去。",
+      "file": "audio/voice/starfield/10m08.mp3",
+      "ok": true,
+      "duration": 4.97
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 10,
+      "index": 9,
+      "t": 510,
+      "text": "你比想象中辽阔。心里能装下的，不止这一片星空。",
+      "file": "audio/voice/starfield/10m09.mp3",
+      "ok": true,
+      "duration": 5.11
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 10,
+      "index": 10,
+      "t": 560,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/starfield/10m10.mp3",
+      "ok": true,
+      "duration": 4.15
+    },
+    {
+      "hillId": "starfield",
+      "minutes": 10,
+      "index": 11,
+      "t": 592,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/starfield/10m11.mp3",
+      "ok": true,
+      "duration": 2.47
+    },
+    {
+      "hillId": "desert",
+      "minutes": 5,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/desert/5m00.mp3",
+      "ok": true,
+      "duration": 3.86
+    },
+    {
+      "hillId": "desert",
+      "minutes": 5,
+      "index": 1,
+      "t": 20,
+      "text": "感受身体和座位接触的地方，让重量慢慢沉下去。",
+      "file": "audio/voice/desert/5m01.mp3",
+      "ok": true,
+      "duration": 4.39
+    },
+    {
+      "hillId": "desert",
+      "minutes": 5,
+      "index": 2,
+      "t": 45,
+      "text": "注意你的呼吸。不需要改变它，只是看着它。",
+      "file": "audio/voice/desert/5m02.mp3",
+      "ok": true,
+      "duration": 4.34
+    },
+    {
+      "hillId": "desert",
+      "minutes": 5,
+      "index": 3,
+      "t": 90,
+      "text": "想象一片沙漠。很静，很空，什么都不缺。",
+      "file": "audio/voice/desert/5m03.mp3",
+      "ok": true,
+      "duration": 5.11
+    },
+    {
+      "hillId": "desert",
+      "minutes": 5,
+      "index": 4,
+      "t": 150,
+      "text": "念头来了，像一粒沙落在沙上。看见它，然后让它落下。",
+      "file": "audio/voice/desert/5m04.mp3",
+      "ok": true,
+      "duration": 5.69
+    },
+    {
+      "hillId": "desert",
+      "minutes": 5,
+      "index": 5,
+      "t": 210,
+      "text": "呼气时，放下一样东西。再呼气，再放下一样。",
+      "file": "audio/voice/desert/5m05.mp3",
+      "ok": true,
+      "duration": 4.92
+    },
+    {
+      "hillId": "desert",
+      "minutes": 5,
+      "index": 6,
+      "t": 270,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/desert/5m06.mp3",
+      "ok": true,
+      "duration": 4.15
+    },
+    {
+      "hillId": "desert",
+      "minutes": 5,
+      "index": 7,
+      "t": 292,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/desert/5m07.mp3",
+      "ok": true,
+      "duration": 2.47
+    },
+    {
+      "hillId": "desert",
+      "minutes": 10,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/desert/10m00.mp3",
+      "ok": true,
+      "duration": 3.7
+    },
+    {
+      "hillId": "desert",
+      "minutes": 10,
+      "index": 1,
+      "t": 25,
+      "text": "感受身体和座位接触的地方，让重量慢慢沉下去。",
+      "file": "audio/voice/desert/10m01.mp3",
+      "ok": true,
+      "duration": 4.78
+    },
+    {
+      "hillId": "desert",
+      "minutes": 10,
+      "index": 2,
+      "t": 60,
+      "text": "从头到脚，慢慢放松。额头、肩膀、手心，都松下来。",
+      "file": "audio/voice/desert/10m02.mp3",
+      "ok": true,
+      "duration": 6.46
+    },
+    {
+      "hillId": "desert",
+      "minutes": 10,
+      "index": 3,
+      "t": 100,
+      "text": "注意你的呼吸。不需要改变它，只是看着它。",
+      "file": "audio/voice/desert/10m03.mp3",
+      "ok": true,
+      "duration": 4.32
+    },
+    {
+      "hillId": "desert",
+      "minutes": 10,
+      "index": 4,
+      "t": 160,
+      "text": "吸气时，知道自己在吸气；呼气时，知道自己在呼气。",
+      "file": "audio/voice/desert/10m04.mp3",
+      "ok": true,
+      "duration": 5.74
+    },
+    {
+      "hillId": "desert",
+      "minutes": 10,
+      "index": 5,
+      "t": 230,
+      "text": "想象一片沙漠。落日很低，沙丘很静。",
+      "file": "audio/voice/desert/10m05.mp3",
+      "ok": true,
+      "duration": 4.37
+    },
+    {
+      "hillId": "desert",
+      "minutes": 10,
+      "index": 6,
+      "t": 300,
+      "text": "沙漠什么都不缺。空，就是它的全部。",
+      "file": "audio/voice/desert/10m06.mp3",
+      "ok": true,
+      "duration": 3.58
+    },
+    {
+      "hillId": "desert",
+      "minutes": 10,
+      "index": 7,
+      "t": 370,
+      "text": "念头来了，像一粒沙落在沙上。看见它，然后让它落下。",
+      "file": "audio/voice/desert/10m07.mp3",
+      "ok": true,
+      "duration": 5.69
+    },
+    {
+      "hillId": "desert",
+      "minutes": 10,
+      "index": 8,
+      "t": 440,
+      "text": "呼气时，放下一样东西。再呼气，再放下一样。",
+      "file": "audio/voice/desert/10m08.mp3",
+      "ok": true,
+      "duration": 5.11
+    },
+    {
+      "hillId": "desert",
+      "minutes": 10,
+      "index": 9,
+      "t": 510,
+      "text": "感受此刻的空。空不是失去，是腾出地方。",
+      "file": "audio/voice/desert/10m09.mp3",
+      "ok": true,
+      "duration": 4.34
+    },
+    {
+      "hillId": "desert",
+      "minutes": 10,
+      "index": 10,
+      "t": 560,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/desert/10m10.mp3",
+      "ok": true,
+      "duration": 4.27
+    },
+    {
+      "hillId": "desert",
+      "minutes": 10,
+      "index": 11,
+      "t": 592,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/desert/10m11.mp3",
+      "ok": true,
+      "duration": 2.47
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 5,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/sakura/5m00.mp3",
+      "ok": true,
+      "duration": 3.86
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 5,
+      "index": 1,
+      "t": 20,
+      "text": "感受身体和座位接触的地方，让重量慢慢沉下去。",
+      "file": "audio/voice/sakura/5m01.mp3",
+      "ok": true,
+      "duration": 4.78
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 5,
+      "index": 2,
+      "t": 45,
+      "text": "注意你的呼吸。不需要改变它，只是看着它。",
+      "file": "audio/voice/sakura/5m02.mp3",
+      "ok": true,
+      "duration": 4.32
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 5,
+      "index": 3,
+      "t": 90,
+      "text": "想象你坐在樱花树下。花瓣一片一片，慢慢飘落。",
+      "file": "audio/voice/sakura/5m03.mp3",
+      "ok": true,
+      "duration": 5.3
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 5,
+      "index": 4,
+      "t": 150,
+      "text": "每一口呼吸，也像一片花瓣。来了，又走了，不会再来。",
+      "file": "audio/voice/sakura/5m04.mp3",
+      "ok": true,
+      "duration": 6.17
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 5,
+      "index": 5,
+      "t": 210,
+      "text": "在心里轻轻说一声谢谢。给这一刻，给正在呼吸的自己。",
+      "file": "audio/voice/sakura/5m05.mp3",
+      "ok": true,
+      "duration": 5.16
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 5,
+      "index": 6,
+      "t": 270,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/sakura/5m06.mp3",
+      "ok": true,
+      "duration": 4.15
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 5,
+      "index": 7,
+      "t": 292,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/sakura/5m07.mp3",
+      "ok": true,
+      "duration": 2.47
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 10,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/sakura/10m00.mp3",
+      "ok": true,
+      "duration": 3.86
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 10,
+      "index": 1,
+      "t": 25,
+      "text": "感受身体和座位接触的地方，让重量慢慢沉下去。",
+      "file": "audio/voice/sakura/10m01.mp3",
+      "ok": true,
+      "duration": 4.8
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 10,
+      "index": 2,
+      "t": 60,
+      "text": "从头到脚，慢慢放松。额头、肩膀、手心，都松下来。",
+      "file": "audio/voice/sakura/10m02.mp3",
+      "ok": true,
+      "duration": 6.41
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 10,
+      "index": 3,
+      "t": 100,
+      "text": "注意你的呼吸。不需要改变它，只是看着它。",
+      "file": "audio/voice/sakura/10m03.mp3",
+      "ok": true,
+      "duration": 4.3
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 10,
+      "index": 4,
+      "t": 160,
+      "text": "吸气时，知道自己在吸气；呼气时，知道自己在呼气。",
+      "file": "audio/voice/sakura/10m04.mp3",
+      "ok": true,
+      "duration": 5.71
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 10,
+      "index": 5,
+      "t": 230,
+      "text": "想象你坐在樱花坡上。风吹过来，花瓣落进溪流。",
+      "file": "audio/voice/sakura/10m05.mp3",
+      "ok": true,
+      "duration": 5.3
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 10,
+      "index": 6,
+      "t": 300,
+      "text": "花开会谢，水流不停。无常不是失去，是来过。",
+      "file": "audio/voice/sakura/10m06.mp3",
+      "ok": true,
+      "duration": 5.88
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 10,
+      "index": 7,
+      "t": 370,
+      "text": "每一口呼吸，也像一片花瓣。来了，又走了，不会再来。",
+      "file": "audio/voice/sakura/10m07.mp3",
+      "ok": true,
+      "duration": 6.26
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 10,
+      "index": 8,
+      "t": 440,
+      "text": "想起一件值得感谢的小事。不用大，一片花瓣那么大就好。",
+      "file": "audio/voice/sakura/10m08.mp3",
+      "ok": true,
+      "duration": 5.38
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 10,
+      "index": 9,
+      "t": 510,
+      "text": "在心里轻轻说一声谢谢。给这一刻，给正在呼吸的自己。",
+      "file": "audio/voice/sakura/10m09.mp3",
+      "ok": true,
+      "duration": 5.04
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 10,
+      "index": 10,
+      "t": 560,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/sakura/10m10.mp3",
+      "ok": true,
+      "duration": 4.27
+    },
+    {
+      "hillId": "sakura",
+      "minutes": 10,
+      "index": 11,
+      "t": 592,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/sakura/10m11.mp3",
+      "ok": true,
+      "duration": 2.47
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 5,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/mistvalley/5m00.mp3",
+      "ok": true,
+      "duration": 3.82
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 5,
+      "index": 1,
+      "t": 20,
+      "text": "感受身体和座位接触的地方，让重量慢慢沉下去。",
+      "file": "audio/voice/mistvalley/5m01.mp3",
+      "ok": true,
+      "duration": 4.78
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 5,
+      "index": 2,
+      "t": 45,
+      "text": "注意你的呼吸。不需要改变它，只是看着它。",
+      "file": "audio/voice/mistvalley/5m02.mp3",
+      "ok": true,
+      "duration": 4.32
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 5,
+      "index": 3,
+      "t": 90,
+      "text": "想象你坐在山谷里，四周都是雾。看不见远处，也没关系。",
+      "file": "audio/voice/mistvalley/5m03.mp3",
+      "ok": true,
+      "duration": 5.76
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 5,
+      "index": 4,
+      "t": 150,
+      "text": "不确定的感觉来了，就让它来。像雾一样，停在身边。",
+      "file": "audio/voice/mistvalley/5m04.mp3",
+      "ok": true,
+      "duration": 5.23
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 5,
+      "index": 5,
+      "t": 210,
+      "text": "雾不用推开。你坐着，等它自己慢慢变轻。",
+      "file": "audio/voice/mistvalley/5m05.mp3",
+      "ok": true,
+      "duration": 3.98
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 5,
+      "index": 6,
+      "t": 270,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/mistvalley/5m06.mp3",
+      "ok": true,
+      "duration": 4.15
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 5,
+      "index": 7,
+      "t": 292,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/mistvalley/5m07.mp3",
+      "ok": true,
+      "duration": 2.47
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 10,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/mistvalley/10m00.mp3",
+      "ok": true,
+      "duration": 3.86
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 10,
+      "index": 1,
+      "t": 25,
+      "text": "感受身体和座位接触的地方，让重量慢慢沉下去。",
+      "file": "audio/voice/mistvalley/10m01.mp3",
+      "ok": true,
+      "duration": 4.78
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 10,
+      "index": 2,
+      "t": 60,
+      "text": "从头到脚，慢慢放松。额头、肩膀、手心，都松下来。",
+      "file": "audio/voice/mistvalley/10m02.mp3",
+      "ok": true,
+      "duration": 6.38
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 10,
+      "index": 3,
+      "t": 100,
+      "text": "注意你的呼吸。不需要改变它，只是看着它。",
+      "file": "audio/voice/mistvalley/10m03.mp3",
+      "ok": true,
+      "duration": 4.32
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 10,
+      "index": 4,
+      "t": 160,
+      "text": "吸气时，知道自己在吸气；呼气时，知道自己在呼气。",
+      "file": "audio/voice/mistvalley/10m04.mp3",
+      "ok": true,
+      "duration": 5.71
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 10,
+      "index": 5,
+      "t": 230,
+      "text": "想象你坐在山谷里，四周都是雾。远处的山，若隐若现。",
+      "file": "audio/voice/mistvalley/10m05.mp3",
+      "ok": true,
+      "duration": 6.82
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 10,
+      "index": 6,
+      "t": 300,
+      "text": "看不见远处，也没关系。你只需要看见眼前这一小片。",
+      "file": "audio/voice/mistvalley/10m06.mp3",
+      "ok": true,
+      "duration": 4.92
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 10,
+      "index": 7,
+      "t": 370,
+      "text": "不确定的感觉来了，就让它来。像雾一样，停在身边。",
+      "file": "audio/voice/mistvalley/10m07.mp3",
+      "ok": true,
+      "duration": 5.28
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 10,
+      "index": 8,
+      "t": 440,
+      "text": "不用急着给答案。问题可以悬着，你可以坐着。",
+      "file": "audio/voice/mistvalley/10m08.mp3",
+      "ok": true,
+      "duration": 3.72
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 10,
+      "index": 9,
+      "t": 510,
+      "text": "雾不用推开。你坐着，等它自己慢慢变轻。",
+      "file": "audio/voice/mistvalley/10m09.mp3",
+      "ok": true,
+      "duration": 4.06
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 10,
+      "index": 10,
+      "t": 560,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/mistvalley/10m10.mp3",
+      "ok": true,
+      "duration": 4.15
+    },
+    {
+      "hillId": "mistvalley",
+      "minutes": 10,
+      "index": 11,
+      "t": 592,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/mistvalley/10m11.mp3",
+      "ok": true,
+      "duration": 2.88
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 5,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/grassland/5m00.mp3",
+      "ok": true,
+      "duration": 3.86
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 5,
+      "index": 1,
+      "t": 20,
+      "text": "感受身体和座位接触的地方，让重量慢慢沉下去。",
+      "file": "audio/voice/grassland/5m01.mp3",
+      "ok": true,
+      "duration": 4.78
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 5,
+      "index": 2,
+      "t": 45,
+      "text": "注意你的呼吸。像风一样，它自己来，自己走。",
+      "file": "audio/voice/grassland/5m02.mp3",
+      "ok": true,
+      "duration": 4.61
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 5,
+      "index": 3,
+      "t": 90,
+      "text": "想象你坐在一片草原上。风来了，草浪一层一层，推向远山。",
+      "file": "audio/voice/grassland/5m03.mp3",
+      "ok": true,
+      "duration": 6.65
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 5,
+      "index": 4,
+      "t": 150,
+      "text": "念头来了，像风一样穿过你。不抓，也不挡。",
+      "file": "audio/voice/grassland/5m04.mp3",
+      "ok": true,
+      "duration": 4.58
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 5,
+      "index": 5,
+      "t": 210,
+      "text": "声音、感觉、念头，都放进这片开阔里。草原很大，装得下一切。",
+      "file": "audio/voice/grassland/5m05.mp3",
+      "ok": true,
+      "duration": 7.27
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 5,
+      "index": 6,
+      "t": 265,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/grassland/5m06.mp3",
+      "ok": true,
+      "duration": 4.15
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 5,
+      "index": 7,
+      "t": 292,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/grassland/5m07.mp3",
+      "ok": true,
+      "duration": 3.1
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 10,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/grassland/10m00.mp3",
+      "ok": true,
+      "duration": 3.89
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 10,
+      "index": 1,
+      "t": 25,
+      "text": "感受身体和座位接触的地方，让重量慢慢沉下去。",
+      "file": "audio/voice/grassland/10m01.mp3",
+      "ok": true,
+      "duration": 4.39
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 10,
+      "index": 2,
+      "t": 60,
+      "text": "从头到脚，慢慢放松。额头、肩膀、手心，都松下来。",
+      "file": "audio/voice/grassland/10m02.mp3",
+      "ok": true,
+      "duration": 6.36
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 10,
+      "index": 3,
+      "t": 100,
+      "text": "注意你的呼吸。像风一样，它自己来，自己走。",
+      "file": "audio/voice/grassland/10m03.mp3",
+      "ok": true,
+      "duration": 4.75
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 10,
+      "index": 4,
+      "t": 160,
+      "text": "想象你坐在一片草原上。风来了，草浪一层一层，推向远山。",
+      "file": "audio/voice/grassland/10m04.mp3",
+      "ok": true,
+      "duration": 6.67
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 10,
+      "index": 5,
+      "t": 230,
+      "text": "风吹过耳朵，吹过肩膀，吹过指尖。你不抓，也不挡。",
+      "file": "audio/voice/grassland/10m05.mp3",
+      "ok": true,
+      "duration": 7.2
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 10,
+      "index": 6,
+      "t": 300,
+      "text": "念头来了，像风一样穿过你。发现走神，就回到这口呼吸。",
+      "file": "audio/voice/grassland/10m06.mp3",
+      "ok": true,
+      "duration": 5.95
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 10,
+      "index": 7,
+      "t": 370,
+      "text": "听一听周围的声音。远的，近的，都放进这片开阔里。",
+      "file": "audio/voice/grassland/10m07.mp3",
+      "ok": true,
+      "duration": 5.4
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 10,
+      "index": 8,
+      "t": 440,
+      "text": "草原很大，装得下风声，也装得下你的所有念头。",
+      "file": "audio/voice/grassland/10m08.mp3",
+      "ok": true,
+      "duration": 4.73
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 10,
+      "index": 9,
+      "t": 510,
+      "text": "此刻你什么都不用做，只是坐着，像草原一样开阔。",
+      "file": "audio/voice/grassland/10m09.mp3",
+      "ok": true,
+      "duration": 4.3
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 10,
+      "index": 10,
+      "t": 560,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/grassland/10m10.mp3",
+      "ok": true,
+      "duration": 4.18
+    },
+    {
+      "hillId": "grassland",
+      "minutes": 10,
+      "index": 11,
+      "t": 592,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/grassland/10m11.mp3",
+      "ok": true,
+      "duration": 2.47
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 5,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/hotspring/5m00.mp3",
+      "ok": true,
+      "duration": 3.86
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 5,
+      "index": 1,
+      "t": 20,
+      "text": "想象你坐在温泉边，热气一团一团，慢慢围过来。",
+      "file": "audio/voice/hotspring/5m01.mp3",
+      "ok": true,
+      "duration": 4.87
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 5,
+      "index": 2,
+      "t": 45,
+      "text": "跟着呼吸，慢一点。吸气……一、二、三、四、五……呼气……一、二、三、四、五……",
+      "file": "audio/voice/hotspring/5m02.mp3",
+      "ok": true,
+      "duration": 12.29
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 5,
+      "index": 3,
+      "t": 90,
+      "text": "把注意力放在头顶。让一股暖意，从头顶开始，慢慢往下淌。",
+      "file": "audio/voice/hotspring/5m03.mp3",
+      "ok": true,
+      "duration": 6.31
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 5,
+      "index": 4,
+      "t": 150,
+      "text": "暖意流过额头、眼睛、脸颊。流到肩膀时，让它沉下来，像泡进热水里。",
+      "file": "audio/voice/hotspring/5m04.mp3",
+      "ok": true,
+      "duration": 7.66
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 5,
+      "index": 5,
+      "t": 210,
+      "text": "暖意继续往下，流过胸口、手心、双腿，一直到脚尖。身体每一寸，都暖暖的。",
+      "file": "audio/voice/hotspring/5m05.mp3",
+      "ok": true,
+      "duration": 9.07
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 5,
+      "index": 6,
+      "t": 265,
+      "text": "最后一次深呼吸。吸气……慢一点……呼气……再慢一点……",
+      "file": "audio/voice/hotspring/5m06.mp3",
+      "ok": true,
+      "duration": 6.0
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 5,
+      "index": 7,
+      "t": 292,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/hotspring/5m07.mp3",
+      "ok": true,
+      "duration": 2.47
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 10,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/hotspring/10m00.mp3",
+      "ok": true,
+      "duration": 3.82
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 10,
+      "index": 1,
+      "t": 25,
+      "text": "想象你坐在温泉边，热气一团一团，慢慢围过来。",
+      "file": "audio/voice/hotspring/10m01.mp3",
+      "ok": true,
+      "duration": 4.75
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 10,
+      "index": 2,
+      "t": 60,
+      "text": "感受身体和座位接触的地方，让重量暖暖地沉下去。",
+      "file": "audio/voice/hotspring/10m02.mp3",
+      "ok": true,
+      "duration": 4.8
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 10,
+      "index": 3,
+      "t": 100,
+      "text": "跟着呼吸，慢一点。吸气……一、二、三、四、五……呼气……一、二、三、四、五……",
+      "file": "audio/voice/hotspring/10m03.mp3",
+      "ok": true,
+      "duration": 12.98
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 10,
+      "index": 4,
+      "t": 160,
+      "text": "把注意力放在头顶。让一股暖意，从头顶开始，慢慢往下淌。",
+      "file": "audio/voice/hotspring/10m04.mp3",
+      "ok": true,
+      "duration": 6.31
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 10,
+      "index": 5,
+      "t": 230,
+      "text": "暖意流过额头、眼睛、脸颊。每一寸皮肤，都松开了。",
+      "file": "audio/voice/hotspring/10m05.mp3",
+      "ok": true,
+      "duration": 6.6
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 10,
+      "index": 6,
+      "t": 300,
+      "text": "暖意流到脖子，流到肩膀。让肩膀沉下来，像泡进热水里。",
+      "file": "audio/voice/hotspring/10m06.mp3",
+      "ok": true,
+      "duration": 5.81
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 10,
+      "index": 7,
+      "t": 370,
+      "text": "暖意流过胸口和后背。心里的紧，也一点一点烫开了。",
+      "file": "audio/voice/hotspring/10m07.mp3",
+      "ok": true,
+      "duration": 5.47
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 10,
+      "index": 8,
+      "t": 440,
+      "text": "暖意流到手心、双腿，一直到脚尖。连脚趾头，都暖暖的。",
+      "file": "audio/voice/hotspring/10m08.mp3",
+      "ok": true,
+      "duration": 5.95
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 10,
+      "index": 9,
+      "t": 510,
+      "text": "此刻，整个身体都泡在暖意里。它记得一切，也可以放下一切。",
+      "file": "audio/voice/hotspring/10m09.mp3",
+      "ok": true,
+      "duration": 5.64
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 10,
+      "index": 10,
+      "t": 560,
+      "text": "最后一次深呼吸。吸气……慢一点……呼气……再慢一点……",
+      "file": "audio/voice/hotspring/10m10.mp3",
+      "ok": true,
+      "duration": 6.0
+    },
+    {
+      "hillId": "hotspring",
+      "minutes": 10,
+      "index": 11,
+      "t": 592,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/hotspring/10m11.mp3",
+      "ok": true,
+      "duration": 2.47
+    },
+    {
+      "hillId": "temple",
+      "minutes": 5,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/temple/5m00.mp3",
+      "ok": true,
+      "duration": 3.86
+    },
+    {
+      "hillId": "temple",
+      "minutes": 5,
+      "index": 1,
+      "t": 20,
+      "text": "听，远处的钟声，一下，又一下。让心跟着静下来。",
+      "file": "audio/voice/temple/5m01.mp3",
+      "ok": true,
+      "duration": 6.24
+    },
+    {
+      "hillId": "temple",
+      "minutes": 5,
+      "index": 2,
+      "t": 45,
+      "text": "注意你的呼吸。一吸一呼，像寺前的灯，明明灭灭，却一直亮着。",
+      "file": "audio/voice/temple/5m02.mp3",
+      "ok": true,
+      "duration": 7.1
+    },
+    {
+      "hillId": "temple",
+      "minutes": 5,
+      "index": 3,
+      "t": 90,
+      "text": "把心安在自己身上。默默地对自己说：愿我平安，愿我安好。",
+      "file": "audio/voice/temple/5m03.mp3",
+      "ok": true,
+      "duration": 6.24
+    },
+    {
+      "hillId": "temple",
+      "minutes": 5,
+      "index": 4,
+      "t": 150,
+      "text": "想起一位你惦念的人。把这盏灯递过去：愿你平安，愿你安好。",
+      "file": "audio/voice/temple/5m04.mp3",
+      "ok": true,
+      "duration": 5.95
+    },
+    {
+      "hillId": "temple",
+      "minutes": 5,
+      "index": 5,
+      "t": 210,
+      "text": "再把灯举得远一些。给更多的人，给所有像你我一样走着的人。",
+      "file": "audio/voice/temple/5m05.mp3",
+      "ok": true,
+      "duration": 5.93
+    },
+    {
+      "hillId": "temple",
+      "minutes": 5,
+      "index": 6,
+      "t": 265,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/temple/5m06.mp3",
+      "ok": true,
+      "duration": 4.18
+    },
+    {
+      "hillId": "temple",
+      "minutes": 5,
+      "index": 7,
+      "t": 292,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/temple/5m07.mp3",
+      "ok": true,
+      "duration": 3.1
+    },
+    {
+      "hillId": "temple",
+      "minutes": 10,
+      "index": 0,
+      "t": 0,
+      "text": "找一个舒服的姿势坐好，轻轻闭上眼睛。",
+      "file": "audio/voice/temple/10m00.mp3",
+      "ok": true,
+      "duration": 3.86
+    },
+    {
+      "hillId": "temple",
+      "minutes": 10,
+      "index": 1,
+      "t": 25,
+      "text": "听，远处的钟声，一下，又一下。让心跟着静下来。",
+      "file": "audio/voice/temple/10m01.mp3",
+      "ok": true,
+      "duration": 6.07
+    },
+    {
+      "hillId": "temple",
+      "minutes": 10,
+      "index": 2,
+      "t": 60,
+      "text": "从头到脚，慢慢放松。额头、肩膀、手心，都松下来。",
+      "file": "audio/voice/temple/10m02.mp3",
+      "ok": true,
+      "duration": 6.46
+    },
+    {
+      "hillId": "temple",
+      "minutes": 10,
+      "index": 3,
+      "t": 100,
+      "text": "注意你的呼吸。一吸一呼，像寺前的灯，明明灭灭，却一直亮着。",
+      "file": "audio/voice/temple/10m03.mp3",
+      "ok": true,
+      "duration": 7.1
+    },
+    {
+      "hillId": "temple",
+      "minutes": 10,
+      "index": 4,
+      "t": 160,
+      "text": "把心安在自己身上。默默地对自己说：愿我平安，愿我安好。",
+      "file": "audio/voice/temple/10m04.mp3",
+      "ok": true,
+      "duration": 6.24
+    },
+    {
+      "hillId": "temple",
+      "minutes": 10,
+      "index": 5,
+      "t": 230,
+      "text": "不着急。一遍一遍地说，像点灯，一盏一盏，把自己照亮。",
+      "file": "audio/voice/temple/10m05.mp3",
+      "ok": true,
+      "duration": 6.17
+    },
+    {
+      "hillId": "temple",
+      "minutes": 10,
+      "index": 6,
+      "t": 300,
+      "text": "想起一位你惦念的人。把这盏灯递过去：愿你平安，愿你安好。",
+      "file": "audio/voice/temple/10m06.mp3",
+      "ok": true,
+      "duration": 6.05
+    },
+    {
+      "hillId": "temple",
+      "minutes": 10,
+      "index": 7,
+      "t": 370,
+      "text": "想起一个让你为难的人。也试着，给他留一盏小小的灯。",
+      "file": "audio/voice/temple/10m07.mp3",
+      "ok": true,
+      "duration": 4.54
+    },
+    {
+      "hillId": "temple",
+      "minutes": 10,
+      "index": 8,
+      "t": 440,
+      "text": "再把灯举得远一些。给这山里山外，所有像你我一样走着的人。",
+      "file": "audio/voice/temple/10m08.mp3",
+      "ok": true,
+      "duration": 5.81
+    },
+    {
+      "hillId": "temple",
+      "minutes": 10,
+      "index": 9,
+      "t": 510,
+      "text": "你走过的每一座山，都在这一盏灯里。灯灯相传，你从来不是一个人走。",
+      "file": "audio/voice/temple/10m09.mp3",
+      "ok": true,
+      "duration": 6.91
+    },
+    {
+      "hillId": "temple",
+      "minutes": 10,
+      "index": 10,
+      "t": 560,
+      "text": "最后一次深呼吸。吸气……呼气……",
+      "file": "audio/voice/temple/10m10.mp3",
+      "ok": true,
+      "duration": 4.15
+    },
+    {
+      "hillId": "temple",
+      "minutes": 10,
+      "index": 11,
+      "t": 592,
+      "text": "准备好了，就慢慢睁开眼睛。",
+      "file": "audio/voice/temple/10m11.mp3",
+      "ok": true,
+      "duration": 2.47
+    }
+  ],
+  "missing": []
+}

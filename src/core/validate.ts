@@ -106,10 +106,10 @@ export function validateDialogue(raw: unknown, expectHillId: string): DialogueSc
     errors.push('nodes 必须是非空数组');
   }
 
-  if (Array.isArray(d.nodes)) {
+  const checkNodes = (nodes: DialogueScript['nodes'], label: string): void => {
     const ids = new Set<string>();
-    d.nodes.forEach((n, i) => {
-      const where = `nodes[${i}]`;
+    nodes.forEach((n, i) => {
+      const where = `${label}[${i}]`;
       if (!n || typeof n !== 'object') {
         errors.push(`${where}: 不是对象`);
         return;
@@ -137,7 +137,7 @@ export function validateDialogue(raw: unknown, expectHillId: string): DialogueSc
       }
     });
     // 引用闭环
-    d.nodes.forEach((n) => {
+    nodes.forEach((n) => {
       if (n?.next && !ids.has(n.next)) errors.push(`${n.id}: next 指向不存在的 "${n.next}"`);
       n?.options?.forEach((o) => {
         if (o.reply && !ids.has(o.reply)) {
@@ -145,6 +145,16 @@ export function validateDialogue(raw: unknown, expectHillId: string): DialogueSc
         }
       });
     });
+  };
+
+  if (Array.isArray(d.nodes)) checkNodes(d.nodes, 'nodes');
+  // M4 彩蛋对话：可选，存在则同样校验闭环
+  if (d.easterEgg !== undefined) {
+    if (!Array.isArray(d.easterEgg) || d.easterEgg.length === 0) {
+      errors.push('easterEgg 必须是非空数组');
+    } else {
+      checkNodes(d.easterEgg, 'easterEgg');
+    }
   }
 
   if (errors.length > 0) {

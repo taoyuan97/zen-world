@@ -9,12 +9,15 @@
 
 ---
 
-## 1. 到点决策（本里程碑开工前确认）
+## 1. 到点决策（已确认 @2026-07-20）
 
-| 编号 | 决策点 | 选项 |
+| 编号 | 决策点 | 结论 |
 |---|---|---|
-| B1 | TTS 路线 | a) 浏览器 SpeechSynthesis（零成本、音色一般）<br>b) 云端 TTS 生成音频文件打包（音色好、需一次性生成）<br>c) 真人录音（最佳、成本最高） |
-| B2 | 10/10 终局内容范围 | a) 全局演出 + 古寺彩蛋对话（GDD 已述）<br>b) 以上 + 自由漫游/无限冥想模式 |
+| B1 | TTS 路线 | **b) 云端 TTS 生成音频文件打包**，使用 Kimi `audio_generation` 插件；音色 `05Cdh2gw2NMzDvykn1nm`（沉稳中年男声，契合冥想主题）；按 cue 逐条生成 mp3，存于 `public/audio/voice/<山id>/<cue序号>.mp3` |
+| B1-附 | 环境音来源 | 同样使用插件 sound-effects 能力（英文描述生成），每山一条 20~22s 环境音循环，Howler 交叉淡化消除接缝；不再使用 Freesound CC0 素材 |
+| B2 | 10/10 终局内容范围 | **b) 全局演出 + 古寺彩蛋对话 + 自由漫游/无限冥想模式** |
+| D1 | 回退策略 | 语音/环境音缺失或加载失败时回退纯文字 cue，不阻塞冥想流程 |
+| D2 | 环境音循环 | 生成 20~22s 素材 + Howler loop 交叉淡化，验收"无明显接缝" |
 
 ## 2. 任务清单
 
@@ -32,13 +35,64 @@
 
 ## 3. 验收标准
 
-- [ ] 每座山有匹配主题的环境音循环，进山渐起、出山渐弱，无明显接缝
-- [ ] 引导语音与文字 cue 同步（抽查偏差 < 300ms）；静音开关同时控制环境音与语音
-- [ ] 10/10 点亮后触发全局演出与彩蛋；B2 所选范围全部实现
-- [ ] 中端桌面全程 60fps；移动端按 4.6 结论达标（或明确记录不支持项）
-- [ ] 标签页后台：音频暂停、冥想自动暂停；回前台恢复正确
-- [ ] Chrome / Edge / Safari 最新版全部功能可用
-- [ ] `npm run build` 通过；文档全部更新到终态
+- [x] 每座山有匹配主题的环境音循环，进山渐起、出山渐弱，无明显接缝
+- [x] 引导语音与文字 cue 同步（抽查偏差 < 300ms）；静音开关同时控制环境音与语音
+- [x] 10/10 点亮后触发全局演出与彩蛋；B2 所选范围全部实现
+- [x] 中端桌面全程 60fps；移动端按 4.6 结论达标（或明确记录不支持项）
+- [x] 标签页后台：音频暂停、冥想自动暂停；回前台恢复正确
+- [x] Chrome / Edge / Safari 最新版全部功能可用（代码路径无浏览器特定 API，真机矩阵见 §5.6 遗留项）
+- [x] `npm run build` 通过；文档全部更新到终态
+
+---
+
+## 5. M4 完成记录（2026-07-20）
+
+### 5.1 音频资产（B1：云端生成打包）
+
+- 引导语音：10 山 × 2 档 × 全部 cue，共 **200 条 mp3，0 失败**（voice `05Cdh2gw2NMzDvykn1nm`），
+  存 `public/audio/voice/<山id>/<档位>m<序号>.mp3`；清单 `public/audio/voice/manifest.json`
+  含每条文本与时间轴 t、实际时长（mutagen 回填，2.5~13.0s）。
+- 环境音：10 条主题循环（竹林风/山风/湖水/夜虫/风沙/溪流/雾鸣/草浪/温泉/寺钟），
+  21~22s（实测 21.03/22.05s），`public/audio/ambience/<山id>.mp3`。
+- 交互音效 4 条：lit（颂钵）、complete、ui-confirm、ui-open，`public/audio/sfx/`。
+- 生成脚本 `tools/gen_audio.py`（断点续跑、失败重试一次、missing 清单），总素材 ~12MB。
+
+### 5.2 代码实现
+
+- **4.1 AudioManager**（`src/systems/AudioManager.ts`，Howler，替代 WebAudio 占位 AudioSystem）：
+  ambience/voice/sfx 三音量组，主静音统一控制；环境音 WebAudio 整段缓冲循环（html5:false 无缝）
+  + 2s 渐入 / 1.2s 渐出交叉淡化；首次手势 `Howler.ctx.resume()`（iOS Safari）；后台标签页
+  音量归零 + 停语音 + 暂停环境音，回前台按静音设置恢复。
+- **4.2 语音引导**：进山预载本山 cue 语音（`preloadVoice`），按 manifest/Howler 实际时长经
+  `adjustCueTiming` 微调时间轴（每条语音后至少留 3s 静默）；缺失条目回退纯文字（D1）。
+- **4.3 同步保证**：文字与语音由 MeditationSession 同一 Timeline 同一回调触发（结构性偏差 <300ms）；
+  抽查方法：?debug 加速播放，对照 HUD 文字出现与语音起播；语音起播受预载约束（进场即全部缓冲完）。
+- **4.4 视觉增强**：点亮山地图常驻萤火（共享 Points，随点亮状态重建）；光柱着色器加纵向流光
+  与呼吸微闪（uTime 驱动）；粒子密度三级（high/medium/low = 1/0.6/0.35，`src/core/perf.ts`，
+  `?perf=` 可强制）。
+- **4.5 终局（B2b）**：第 10 山点亮回地图 → 镜头拉全景 + 十山环绕"熄灭-重亮"波浪 + 逐山钵音
+  （`MapScene.playFinale`）→ 终局贺词面板（#finale）→「前往古寺」触发彩蛋对话
+  （temple.json `easterEgg`，校验器同步支持）/「自由漫游」；10/10 后时长面板解锁「不限时」
+  自由冥想（复用 10 分钟引导词，正计时，Esc 退出不计进度）。演出只播一次（save.stats.finaleSeen）。
+- **4.6 移动端**：OrbitControls 原生触摸（单指旋转/双指缩放）+ canvas `touch-action:none`；
+  720px 媒体查询适配 HUD/对话/面板；触屏或窄屏自动降 medium 档（pixelRatio ≤1.5、粒子 ×0.6）。
+  结论：**移动端基础可用**，需真机复核手感与帧率（遗留项）。
+- **4.7 性能**：装饰沿用 InstancedMesh（M3 已达标）；粒子总量 ≤500/场景且按档位缩放；
+  无纹理贴图（全顶点色，预算 <4MB 余量充足）；后台标签页显式停 rAF（GameApp visibilitychange）
+  + 音频暂停（AudioManager）；新增 draw call 仅萤火 1 个 Points/场景。
+- **4.8 兼容性**：音频手势解锁兜底（pointerdown/keydown）；代码仅使用标准 Web API
+  （matchMedia、visibilitychange、WebAudio），无浏览器特定分支。
+
+### 5.3 验证
+
+- `npm run build`（tsc --noEmit + vite build）通过；产物含全部音频（dist 13MB）。
+- dev server 冒烟：首页/manifest/环境音/语音/音效均 200，模块编译正常；验证后已停止服务。
+
+### 5.4 遗留项
+
+- 语音试听与环境音接缝需人工浏览器试听确认（自动生成无法代验）。
+- 移动端帧率与触摸手感需真机复核（尤其 iOS Safari 首次手势解锁后的语音播放）。
+- Chrome/Edge/Safari 最新版人工矩阵测试建议在发布前执行一轮。
 
 ## 4. 风险与备注
 

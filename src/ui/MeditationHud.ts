@@ -56,6 +56,14 @@ export class MeditationHud {
   }
 
   updateProgress(elapsed: number, duration: number): void {
+    if (!Number.isFinite(duration)) {
+      // M4 不限时模式：正计时，圆环保持满环微光
+      this.els.ringFg.style.strokeDashoffset = '0';
+      const mm = Math.floor(elapsed / 60);
+      const ss = Math.floor(elapsed % 60);
+      this.els.timeLabel.textContent = `${mm}:${String(ss).padStart(2, '0')}`;
+      return;
+    }
     const k = Math.min(elapsed / duration, 1);
     this.els.ringFg.style.strokeDashoffset = String(RING_CIRCUMFERENCE * (1 - k));
     const remaining = Math.max(0, Math.ceil(duration - elapsed));

@@ -511,3 +511,79 @@ body {
   letter-spacing: 0.08em;
   margin-bottom: 24px;
 }
+
+/* ---------- M4：终局面板 ---------- */
+#finale h2 {
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+}
+
+/* ---------- M4 移动端基础适配（任务 4.6） ---------- */
+#scene {
+  touch-action: none; /* OrbitControls 触摸手势交给画布，禁用浏览器默认滚动/缩放手势 */
+}
+
+@media (max-width: 720px) {
+  #progress-badge {
+    top: 12px;
+    right: 12px;
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+  #mute-btn {
+    top: 52px;
+    right: 12px;
+  }
+  #hint-bar {
+    display: none; /* 窄屏隐藏键鼠提示，避免误导（触摸拖拽/双指缩放可用） */
+  }
+  #onboarding {
+    max-width: 86vw;
+    font-size: 13px;
+    bottom: 40px;
+  }
+  #scene-back {
+    top: 12px;
+    left: 12px;
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+  #scene-mute-btn {
+    top: 12px;
+    right: 12px;
+  }
+  #dialogue {
+    bottom: 20px;
+    width: 92vw;
+    padding: 16px 18px 12px;
+  }
+  #dialogue-text {
+    font-size: 15px;
+  }
+  #med-ring-wrap {
+    top: 16px;
+    transform: translateX(-50%) scale(0.8);
+  }
+  #med-breath {
+    width: 130px;
+    height: 130px;
+  }
+  #med-cue {
+    bottom: 12%;
+    width: 90vw;
+    font-size: 16px;
+  }
+  .panel {
+    min-width: 0;
+    width: 88vw;
+    padding: 26px 20px;
+  }
+  .panel-actions {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .panel-actions button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}

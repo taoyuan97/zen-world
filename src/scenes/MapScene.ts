@@ -3,7 +3,9 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import type { IScene } from '../core/SceneManager';
 import type { EventBus } from '../core/EventBus';
 import type { SaveSystem } from '../systems/SaveSystem';
+import type { AudioManager } from '../systems/AudioManager';
 import type { HillConfig } from '../data/types';
+import type { PerfProfile } from '../core/perf';
 import { Tweens } from '../core/Tween';
 import { buildTerrain, type TerrainResult } from './map/TerrainBuilder';
 import { createHill, type HillNode } from './map/HillFactory';
@@ -15,6 +17,8 @@ interface MapSceneDeps {
   hills: HillConfig[];
   tooltip: Tooltip;
   canvas: HTMLCanvasElement;
+  audio: AudioManager;
+  perf: PerfProfile;
 }
 
 const IDLE_AUTOROTATE_DELAY = 5; // 秒（TDD §5.1：空闲 5s 后自动旋转）
@@ -39,6 +43,14 @@ export class MapScene implements IScene {
   private lastInputAt = 0;
   private elapsed = 0;
   private disposers: Array<() => void> = [];
+  // M4：点亮山常驻萤火（一个共享 Points，密度随性能档位）
+  private fireflies: {
+    points: THREE.Points;
+    count: number;
+    bases: Float32Array;
+    phases: Float32Array;
+    speeds: Float32Array;
+  } | null = null;
 
   constructor(private deps: MapSceneDeps) {
     this.camera3 = new THREE.PerspectiveCamera(
@@ -125,11 +137,148 @@ export class MapScene implements IScene {
         if (node) node.setLit(lit);
         save.debugSetLit(hillId, lit);
         bus.emit('ui:progress', { lit: save.litCount(), total: hills.length });
+        this.rebuildFireflies();
       }),
     );
 
+    this.rebuildFireflies(); // M4：点亮山常驻萤火
     bus.emit('ui:progress', { lit: save.litCount(), total: hills.length });
     tooltip.hide();
+  }
+
+  // ---------- M4：点亮山常驻萤火 ----------
+
+  /** 按当前点亮状态重建共享萤火 Points（每座亮山一圈游移光点）。 */
+  private rebuildFireflies(): void {
+    this.disposeFireflies();
+    const per = Math.max(5, Math.round(12 * this.deps.perf.particleScale));
+    const litNodes = this.hillNodes.filter((n) => this.deps.save.isLit(n.config.id));
+    const count = litNodes.length * per;
+    if (count === 0) return;
+
+    const positions = new Float32Array(count * 3);
+    const bases = new Float32Array(count * 3);
+    const phases = new Float32Array(count);
+    const speeds = new Float32Array(count);
+    let i = 0;
+    for (const node of litNodes) {
+      for (let k = 0; k < per; k++, i++) {
+        const a = Math.random() * Math.PI * 2;
+        const r = 3.5 + Math.random() * 6;
+        bases[i * 3] = node.group.position.x + Math.cos(a) * r;
+        bases[i * 3 + 1] = node.apexY - 4 + Math.random() * 5;
+        bases[i * 3 + 2] = node.group.position.z + Math.sin(a) * r;
+        positions[i * 3] = bases[i * 3];
+        positions[i * 3 + 1] = bases[i * 3 + 1];
+        positions[i * 3 + 2] = bases[i * 3 + 2];
+        phases[i] = Math.random() * Math.PI * 2;
+        speeds[i] = 0.3 + Math.random() * 0.5;
+      }
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const mat = new THREE.PointsMaterial({
+      color: '#ffdf9e',
+      size: 0.9,
+      sizeAttenuation: true,
+      transparent: true,
+      opacity: 0.85,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+    });
+    const points = new THREE.Points(geo, mat);
+    this.scene3.add(points);
+    this.fireflies = { points, count, bases, phases, speeds };
+  }
+
+  private disposeFireflies(): void {
+    if (!this.fireflies) return;
+    this.scene3.remove(this.fireflies.points);
+    this.fireflies.points.geometry.dispose();
+    (this.fireflies.points.material as THREE.Material).dispose();
+    this.fireflies = null;
+  }
+
+  private updateFireflies(): void {
+    const f = this.fireflies;
+    if (!f) return;
+    const attr = f.points.geometry.attributes.position as THREE.BufferAttribute;
+    const t = this.elapsed;
+    for (let i = 0; i < f.count; i++) {
+      const p = f.phases[i];
+      const sp = f.speeds[i];
+      attr.setX(i, f.bases[i * 3] + Math.sin(t * sp + p) * 1.6);
+      attr.setY(i, f.bases[i * 3 + 1] + Math.sin(t * sp * 1.6 + p * 2) * 0.7);
+      attr.setZ(i, f.bases[i * 3 + 2] + Math.cos(t * sp * 0.7 + p) * 1.6);
+    }
+    attr.needsUpdate = true;
+  }
+
+  // ---------- M4：10/10 全局完成演出（B2b 灯光秀） ----------
+
+  /**
+   * 地图全景灯光秀：镜头缓拉高俯瞰 → 十山按序"熄灭-重亮"波浪 + 每山一声钵音。
+   * 期间锁定 OrbitControls；resolve 后由主流程弹出终局贺词面板。
+   */
+  playFinale(): Promise<void> {
+    return new Promise((resolve) => {
+      try {
+        this.playFinaleInner(resolve);
+      } catch (err) {
+        console.error('[MapScene] finale error', err);
+        if (this.controls) this.controls.enabled = true;
+        resolve();
+      }
+    });
+  }
+
+  private playFinaleInner(resolve: () => void): void {
+    if (this.controls) this.controls.enabled = false;
+    this.deps.tooltip.hide();
+
+    // 镜头缓推到全景机位
+    const camFrom = this.camera3.position.clone();
+    const camTo = new THREE.Vector3(0, 95, 130);
+    const targetFrom = this.controls?.target.clone() ?? new THREE.Vector3(0, 4, 0);
+    this.tweens.add({
+      duration: 3.2,
+      ease: (k) => 1 - Math.pow(1 - k, 3),
+      onUpdate: (k) => {
+        this.camera3.position.lerpVectors(camFrom, camTo, k);
+        this.controls?.target.lerpVectors(targetFrom, new THREE.Vector3(0, 4, 0), k);
+      },
+    });
+
+    // 十山按距地图中心的方位角排序，依次重亮（波浪环绕一周）
+    const ordered = [...this.hillNodes].sort(
+      (a, b) =>
+        Math.atan2(a.group.position.x, a.group.position.z) -
+        Math.atan2(b.group.position.x, b.group.position.z),
+    );
+    const STEP = 0.45;
+    ordered.forEach((node, i) => {
+      // 延时 tween：i*STEP 后触发该山"熄灭→重亮"波浪
+      this.tweens.add({
+        duration: 0.05 + i * STEP,
+        onUpdate: () => undefined,
+        onComplete: () => {
+          node.setLit(false, true);
+          node.setLit(true);
+          this.deps.audio.playSfx('lit');
+          this.rebuildFireflies();
+        },
+      });
+    });
+
+    const total = 1.2 + ordered.length * STEP + 1.6;
+    this.tweens.add({
+      duration: total,
+      onUpdate: () => undefined,
+      onComplete: () => {
+        if (this.controls) this.controls.enabled = true;
+        resolve();
+      },
+    });
   }
 
   update(dt: number): void {
@@ -144,6 +293,7 @@ export class MapScene implements IScene {
       this.pointerDirty = false; // 每帧最多一次 Raycast（TDD §5.1）
       this.updateHover();
     }
+    this.updateFireflies();
     this.updateTooltip();
   }
 
@@ -199,6 +349,7 @@ export class MapScene implements IScene {
     this.hovered = null;
     document.body.style.cursor = '';
     this.deps.tooltip.hide();
+    this.disposeFireflies();
     this.controls?.dispose();
     this.controls = null;
     this.tweens.clear();

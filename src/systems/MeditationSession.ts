@@ -5,6 +5,8 @@ import type { MeditationScript } from '../data/types';
 interface SessionOpts {
   onComplete: () => void;
   debug?: boolean; // 仅调试模式响应 debug:time-scale
+  /** M4 不限时模式：cue 播完后不自动完成，Esc 中断退出且不计进度（B2b 无限冥想）。 */
+  free?: boolean;
 }
 
 const TICK_MS = 250; // HUD 进度刷新间隔
@@ -21,6 +23,7 @@ export class MeditationSession {
   private script: MeditationScript | null = null;
   private timer: number | null = null;
   private completed = false;
+  private free = false;
   private onComplete: (() => void) | null = null;
   private disposers: Array<() => void> = [];
 
@@ -37,12 +40,13 @@ export class MeditationSession {
     this.disposeListeners();
     this.script = script;
     this.completed = false;
+    this.free = !!opts.free;
     this.onComplete = opts.onComplete;
 
     this.timeline = new Timeline();
-    for (const cue of script.cues) {
-      this.timeline.add(cue.t, () => this.bus.emit('meditation:cue', { text: cue.text }));
-    }
+    script.cues.forEach((cue, index) => {
+      this.timeline.add(cue.t, () => this.bus.emit('meditation:cue', { text: cue.text, index }));
+    });
 
     // 页面隐藏自动暂停（TDD §6.3）
     const onVisibility = (): void => {
@@ -88,7 +92,7 @@ export class MeditationSession {
       this.timeline.tick();
       const elapsed = this.timeline.elapsed;
       this.bus.emit('meditation:progress', { elapsed, duration: this.script.duration });
-      if (elapsed >= this.script.duration) {
+      if (!this.free && elapsed >= this.script.duration) {
         this.completed = true;
         const seconds = this.script.duration;
         console.info(`[MeditationSession] complete @${elapsed.toFixed(2)}s / ${seconds}s`);

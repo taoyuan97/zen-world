@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { Ease, Tweens } from '../core/Tween';
 import type { HillConfig } from '../data/types';
-import type { AudioSystem } from './AudioSystem';
+import type { AudioManager } from './AudioManager';
 
 /** 演出宿主接口：由 MeditationScene 实现，系统层不直接触碰场景内部。 */
 export interface RitualStage {
@@ -25,7 +25,7 @@ const PARTICLE_LIFE = 1.5;
  * → t=0.8~3.0 场景配色 unlit→lit → t=3.0 光柱淡出 → resolve。
  */
 export class LightingRitual {
-  constructor(private audio: AudioSystem) {}
+  constructor(private audio: AudioManager) {}
 
   play(stage: RitualStage, theme: HillConfig): Promise<void> {
     return new Promise((resolve) => {
@@ -46,7 +46,7 @@ export class LightingRitual {
       const anchor = stage.teacherAnchor();
       const disposables: Array<{ dispose(): void }> = [];
 
-      // ---- 光柱：圆柱 + 加色渐变 ShaderMaterial ----
+      // ---- 光柱：圆柱 + 加色渐变 ShaderMaterial（M4 打磨：纵向微光流 + 时间微闪）----
       const pillarGeo = new THREE.CylinderGeometry(0.9, 1.15, 14, 20, 1, true);
       const pillarMat = new THREE.ShaderMaterial({
         transparent: true,
@@ -56,6 +56,7 @@ export class LightingRitual {
         uniforms: {
           uColor: { value: new THREE.Color(theme.palette.accent2).lerp(new THREE.Color(GOLD), 0.5) },
           uOpacity: { value: 0 },
+          uTime: { value: 0 },
         },
         vertexShader: /* glsl */ `
           varying vec2 vUv;
@@ -67,10 +68,15 @@ export class LightingRitual {
         fragmentShader: /* glsl */ `
           uniform vec3 uColor;
           uniform float uOpacity;
+          uniform float uTime;
           varying vec2 vUv;
           void main() {
             float fade = smoothstep(0.0, 0.25, vUv.y) * (1.0 - smoothstep(0.55, 1.0, vUv.y));
-            gl_FragColor = vec4(uColor, uOpacity * fade);
+            // 纵向缓流光带（绕柱 3 条，随时间上升），保持禅意的低速
+            float streak = 0.82 + 0.18 * sin(vUv.x * 18.8496 + vUv.y * 6.0 - uTime * 1.6);
+            // 呼吸式微闪（±6%）
+            float breathe = 0.94 + 0.06 * sin(uTime * 2.2);
+            gl_FragColor = vec4(uColor, uOpacity * fade * streak * breathe);
           }
         `,
       });
@@ -115,7 +121,15 @@ export class LightingRitual {
 
       const tw = stage.tweens;
 
-      // t=0：钵音（D6：与 HUD 占位音复用同一合成函数）
+      // 光柱着色器时间驱动（整段演出生命周期）
+      tw.add({
+        duration: 4.0,
+        onUpdate: () => {
+          pillarMat.uniforms.uTime.value += 1 / 60;
+        },
+      });
+
+      // t=0：钵音（M4：生成的颂钵音效，AudioManager 兼容接口）
       this.audio.playBowl();
 
       // t=0.2：光柱升起（透明度 0→0.6）

@@ -34,7 +34,7 @@ const GROUND_RADIUS = 20;
 const PARTICLE_COUNT = 300;
 const STEAM_COUNT = 160;
 
-export function buildThemeEnvironment(config: HillConfig): ThemeEnvironment {
+export function buildThemeEnvironment(config: HillConfig, density = 1): ThemeEnvironment {
   const group = new THREE.Group();
   const disposables: Disposables = [];
   const updatables: Updatable[] = [];
@@ -118,8 +118,8 @@ export function buildThemeEnvironment(config: HillConfig): ThemeEnvironment {
     group.add(builder());
   }
 
-  // ---------- 粒子（按类型差异化，Points ≤ 500）----------
-  const particles = buildParticles(config, disposables);
+  // ---------- 粒子（按类型差异化，Points ≤ 500；密度按性能档位缩放，M4）----------
+  const particles = buildParticles(config, disposables, density);
   if (particles) {
     group.add(particles.points);
     updatables.push(particles.update);
@@ -806,20 +806,24 @@ interface ParticleSystem {
   update: Updatable;
 }
 
-function buildParticles(config: HillConfig, disposables: Disposables): ParticleSystem | null {
+function buildParticles(
+  config: HillConfig,
+  disposables: Disposables,
+  density = 1,
+): ParticleSystem | null {
   switch (config.env.particles) {
     case 'none':
       return null;
     case 'leaves':
-      return buildFalling(config, disposables, { speedMin: 0.5, speedMax: 1.3, size: 0.16, sway: 0.5 });
+      return buildFalling(config, disposables, density, { speedMin: 0.5, speedMax: 1.3, size: 0.16, sway: 0.5 });
     case 'snow':
-      return buildFalling(config, disposables, { speedMin: 0.25, speedMax: 0.6, size: 0.12, sway: 0.35 });
+      return buildFalling(config, disposables, density, { speedMin: 0.25, speedMax: 0.6, size: 0.12, sway: 0.35 });
     case 'petals':
-      return buildFalling(config, disposables, { speedMin: 0.4, speedMax: 0.85, size: 0.18, sway: 0.9 });
+      return buildFalling(config, disposables, density, { speedMin: 0.4, speedMax: 0.85, size: 0.18, sway: 0.9 });
     case 'fireflies':
-      return buildFireflies(config, disposables);
+      return buildFireflies(config, disposables, density);
     case 'steam':
-      return buildSteam(disposables);
+      return buildSteam(disposables, density);
   }
 }
 
@@ -827,13 +831,15 @@ function buildParticles(config: HillConfig, disposables: Disposables): ParticleS
 function buildFalling(
   config: HillConfig,
   disposables: Disposables,
+  density: number,
   opts: { speedMin: number; speedMax: number; size: number; sway: number },
 ): ParticleSystem {
+  const COUNT = Math.max(40, Math.round(PARTICLE_COUNT * density)); // M4 密度分级
   const geo = new THREE.BufferGeometry();
-  const positions = new Float32Array(PARTICLE_COUNT * 3);
-  const speeds = new Float32Array(PARTICLE_COUNT);
-  const phases = new Float32Array(PARTICLE_COUNT);
-  for (let i = 0; i < PARTICLE_COUNT; i++) {
+  const positions = new Float32Array(COUNT * 3);
+  const speeds = new Float32Array(COUNT);
+  const phases = new Float32Array(COUNT);
+  for (let i = 0; i < COUNT; i++) {
     positions[i * 3] = (Math.random() - 0.5) * 36;
     positions[i * 3 + 1] = Math.random() * 12;
     positions[i * 3 + 2] = (Math.random() - 0.5) * 36;
@@ -853,7 +859,7 @@ function buildFalling(
 
   const update: Updatable = (dt, tNow) => {
     const attr = geo.attributes.position as THREE.BufferAttribute;
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
+    for (let i = 0; i < COUNT; i++) {
       let y = attr.getY(i) - speeds[i] * dt;
       if (y < 0.05) y = 10 + Math.random() * 3;
       attr.setY(i, y);
@@ -865,8 +871,12 @@ function buildFalling(
 }
 
 /** 萤火：低空漂浮游移，加色发光（湖畔/星空原/古寺）。 */
-function buildFireflies(config: HillConfig, disposables: Disposables): ParticleSystem {
-  const COUNT = 120;
+function buildFireflies(
+  config: HillConfig,
+  disposables: Disposables,
+  density = 1,
+): ParticleSystem {
+  const COUNT = Math.max(30, Math.round(120 * density)); // M4 密度分级
   const geo = new THREE.BufferGeometry();
   const positions = new Float32Array(COUNT * 3);
   const bases = new Float32Array(COUNT * 3);
@@ -913,11 +923,12 @@ function buildFireflies(config: HillConfig, disposables: Disposables): ParticleS
 }
 
 /** 蒸汽：从蒸汽孔环带升起，到顶循环（温泉谷）。 */
-function buildSteam(disposables: Disposables): ParticleSystem {
+function buildSteam(disposables: Disposables, density = 1): ParticleSystem {
+  const STEAM_N = Math.max(40, Math.round(STEAM_COUNT * density)); // M4 密度分级
   const geo = new THREE.BufferGeometry();
-  const positions = new Float32Array(STEAM_COUNT * 3);
-  const speeds = new Float32Array(STEAM_COUNT);
-  const phases = new Float32Array(STEAM_COUNT);
+  const positions = new Float32Array(STEAM_N * 3);
+  const speeds = new Float32Array(STEAM_N);
+  const phases = new Float32Array(STEAM_N);
   const rand = makeRand(1601);
   const spawn = (i: number, yMax: number): void => {
     const a = rand() * Math.PI * 2;
@@ -926,7 +937,7 @@ function buildSteam(disposables: Disposables): ParticleSystem {
     positions[i * 3 + 1] = rand() * yMax;
     positions[i * 3 + 2] = Math.sin(a) * r;
   };
-  for (let i = 0; i < STEAM_COUNT; i++) {
+  for (let i = 0; i < STEAM_N; i++) {
     spawn(i, 4);
     speeds[i] = 0.5 + rand() * 0.5;
     phases[i] = rand() * Math.PI * 2;
@@ -945,7 +956,7 @@ function buildSteam(disposables: Disposables): ParticleSystem {
 
   const update: Updatable = (dt, tNow) => {
     const attr = geo.attributes.position as THREE.BufferAttribute;
-    for (let i = 0; i < STEAM_COUNT; i++) {
+    for (let i = 0; i < STEAM_N; i++) {
       let y = attr.getY(i) + speeds[i] * dt;
       if (y > 4.5) {
         spawn(i, 0.5);

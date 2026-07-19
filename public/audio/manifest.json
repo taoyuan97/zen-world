@@ -1,0 +1,20 @@
+{
+  "ambience": {
+    "bamboo": 21.03,
+    "desert": 21.03,
+    "grassland": 21.03,
+    "hotspring": 21.03,
+    "lakeside": 21.03,
+    "mistvalley": 21.03,
+    "sakura": 21.03,
+    "snowpeak": 21.03,
+    "starfield": 21.03,
+    "temple": 22.05
+  },
+  "sfx": {
+    "complete": 2.51,
+    "lit": 2.51,
+    "ui-confirm": 0.84,
+    "ui-open": 1.04
+  }
+}

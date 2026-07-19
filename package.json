@@ -9,9 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "howler": "^2.2.4",
     "three": "^0.185.1"
   },
   "devDependencies": {
+    "@types/howler": "^2.2.13",
     "@types/three": "^0.185.1",
     "typescript": "^7.0.2",
     "vite": "^8.1.5"

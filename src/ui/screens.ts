@@ -10,6 +10,7 @@ export class Screens {
       durationPanel: HTMLElement;
       duration5: HTMLButtonElement;
       duration10: HTMLButtonElement;
+      durationFree: HTMLButtonElement;
       durationCancel: HTMLButtonElement;
       completion: HTMLElement;
       completionSession: HTMLElement;
@@ -19,13 +20,18 @@ export class Screens {
       abortConfirm: HTMLElement;
       abortYes: HTMLButtonElement;
       abortNo: HTMLButtonElement;
+      finale: HTMLElement;
+      finaleTemple: HTMLButtonElement;
+      finaleRoam: HTMLButtonElement;
     },
     private callbacks: {
-      onDurationChosen: (minutes: 5 | 10) => void;
+      onDurationChosen: (minutes: 5 | 10 | 'free') => void;
       onDurationCancel: () => void;
       onBackToMap: () => void;
       onAbortConfirmed: () => void;
       onAbortCancelled: () => void;
+      onFinaleTemple: () => void;
+      onFinaleRoam: () => void;
       onAnyClick?: () => void; // UI 点击音
     },
   ) {
@@ -37,15 +43,19 @@ export class Screens {
     };
     click(els.duration5, () => this.callbacks.onDurationChosen(5));
     click(els.duration10, () => this.callbacks.onDurationChosen(10));
+    click(els.durationFree, () => this.callbacks.onDurationChosen('free'));
     click(els.durationCancel, () => this.callbacks.onDurationCancel());
     click(els.completionBack, () => this.callbacks.onBackToMap());
     click(els.abortYes, () => this.callbacks.onAbortConfirmed());
     click(els.abortNo, () => this.callbacks.onAbortCancelled());
+    click(els.finaleTemple, () => this.callbacks.onFinaleTemple());
+    click(els.finaleRoam, () => this.callbacks.onFinaleRoam());
   }
 
-  showDuration(hill: HillConfig): void {
+  showDuration(hill: HillConfig, allowFree = false): void {
     this.els.durationPanel.querySelector('.panel-sub')!.textContent =
       `${hill.teacher.name}在等你。想坐多久？`;
+    this.els.durationFree.classList.toggle('hidden', !allowFree); // M4 B2b：10/10 后不限时
     this.els.durationPanel.classList.remove('hidden');
   }
 
@@ -78,5 +88,14 @@ export class Screens {
 
   hideAbortConfirm(): void {
     this.els.abortConfirm.classList.add('hidden');
+  }
+
+  /** M4 终局贺词面板（10/10 灯光秀之后）。 */
+  showFinale(): void {
+    this.els.finale.classList.remove('hidden');
+  }
+
+  hideFinale(): void {
+    this.els.finale.classList.add('hidden');
   }
 }

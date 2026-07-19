@@ -5,7 +5,7 @@ import { GameApp } from './core/GameApp';
 import { SceneManager } from './core/SceneManager';
 import { AssetLoader } from './core/AssetLoader';
 import { SaveSystem } from './systems/SaveSystem';
-import { AudioSystem } from './systems/AudioSystem';
+import { AudioManager } from './systems/AudioManager';
 import { DialogueSystem } from './systems/DialogueSystem';
 import { MapScene } from './scenes/MapScene';
 import { MeditationScene, type ContentLoader } from './scenes/MeditationScene';
@@ -63,7 +63,10 @@ const overlay = new TransitionOverlay(must('transition-overlay'));
 const scenes = new SceneManager(app, overlay, app.bus);
 app.setScenes(scenes);
 const loader = new AssetLoader(app.bus);
-const audio = new AudioSystem({ bus: app.bus, save });
+const audio = new AudioManager({ bus: app.bus, save });
+
+// ---- M4 终局：第 10 座山点亮后，回到地图时播放全局演出（只播一次）----
+let pendingFinale = false;
 
 // ---- 场景（meditationScene 在 UI 命令闭包中引用，先声明）----
 let meditationScene: MeditationScene;
@@ -79,6 +82,10 @@ const ui = new UIManager({
     resumeMeditation: () => meditationScene?.resumeSession(),
     advanceDialogue: () => dialogue.advance(),
     playClick: () => audio.playClick(),
+    finaleGoTemple: () => {
+      const temple = hills.find((h) => h.id === 'temple');
+      if (temple) void scenes.go('meditation', { hill: temple });
+    },
   },
   els: {
     mapHud: must('map-hud'),
@@ -107,6 +114,7 @@ const ui = new UIManager({
     durationPanel: must('duration-panel'),
     duration5: must<HTMLButtonElement>('duration-5'),
     duration10: must<HTMLButtonElement>('duration-10'),
+    durationFree: must<HTMLButtonElement>('duration-free'),
     durationCancel: must<HTMLButtonElement>('duration-cancel'),
     completion: must('completion'),
     completionSession: must('completion-session'),
@@ -116,6 +124,9 @@ const ui = new UIManager({
     abortConfirm: must('abort-confirm'),
     abortYes: must<HTMLButtonElement>('abort-yes'),
     abortNo: must<HTMLButtonElement>('abort-no'),
+    finale: must('finale'),
+    finaleTemple: must<HTMLButtonElement>('finale-temple'),
+    finaleRoam: must<HTMLButtonElement>('finale-roam'),
   },
 });
 
@@ -126,6 +137,8 @@ const mapScene = new MapScene({
   hills,
   tooltip: ui.tooltip,
   canvas: app.renderer.domElement,
+  audio,
+  perf: app.perf,
 });
 
 // ---- 对话系统 ----
@@ -143,9 +156,10 @@ meditationScene = new MeditationScene({
   tooltip: ui.tooltip,
   canvas: app.renderer.domElement,
   debug,
+  perf: app.perf,
   ui: {
     setSceneHudVisible: (v) => ui.setSceneHud(v),
-    openDuration: (hill) => ui.screens.showDuration(hill),
+    openDuration: (hill, allowFree) => ui.screens.showDuration(hill, allowFree),
     closeDuration: () => ui.screens.hideDuration(),
     showMeditationHud: (script) => ui.meditationHud.show(script),
     hideMeditationHud: () => ui.meditationHud.hide(),
@@ -164,6 +178,17 @@ app.bus.on('hill:selected', ({ hillId }) => {
 });
 app.bus.on('meditation:aborted', () => {
   void scenes.go('map');
+});
+
+// ---- M4 终局编排：第 10 山点亮 → 回地图 → 灯光秀 → 贺词面板 ----
+app.bus.on('ritual:done', () => {
+  if (save.litCount() >= 10 && !save.data.stats.finaleSeen) pendingFinale = true;
+});
+app.bus.on('scene:entered', ({ id }) => {
+  if (id !== 'map' || !pendingFinale) return;
+  pendingFinale = false;
+  save.setFinaleSeen();
+  void mapScene.playFinale().then(() => ui.screens.showFinale());
 });
 
 // ---- 调试开关 ?debug（D8 / TDD §10）----

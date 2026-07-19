@@ -37,6 +37,7 @@ interface UIElements {
   durationPanel: HTMLElement;
   duration5: HTMLButtonElement;
   duration10: HTMLButtonElement;
+  durationFree: HTMLButtonElement;
   durationCancel: HTMLButtonElement;
   completion: HTMLElement;
   completionSession: HTMLElement;
@@ -46,6 +47,10 @@ interface UIElements {
   abortConfirm: HTMLElement;
   abortYes: HTMLButtonElement;
   abortNo: HTMLButtonElement;
+  // M4 终局面板
+  finale: HTMLElement;
+  finaleTemple: HTMLButtonElement;
+  finaleRoam: HTMLButtonElement;
 }
 
 interface UICommands {
@@ -53,6 +58,7 @@ interface UICommands {
   resumeMeditation: () => void;
   advanceDialogue: () => void;
   playClick: () => void;
+  finaleGoTemple: () => void; // M4：终局面板「前往古寺」
 }
 
 const ONBOARDING_MS = 3000; // A6：一次性操作提示 3s 淡出
@@ -102,6 +108,7 @@ export class UIManager {
         durationPanel: els.durationPanel,
         duration5: els.duration5,
         duration10: els.duration10,
+        durationFree: els.durationFree,
         durationCancel: els.durationCancel,
         completion: els.completion,
         completionSession: els.completionSession,
@@ -111,6 +118,9 @@ export class UIManager {
         abortConfirm: els.abortConfirm,
         abortYes: els.abortYes,
         abortNo: els.abortNo,
+        finale: els.finale,
+        finaleTemple: els.finaleTemple,
+        finaleRoam: els.finaleRoam,
       },
       {
         onDurationChosen: (minutes) => bus.emit('meditation:duration-chosen', { minutes }),
@@ -128,6 +138,13 @@ export class UIManager {
         },
         onAbortCancelled: () => {
           els.abortConfirm.classList.add('hidden');
+        },
+        onFinaleTemple: () => {
+          els.finale.classList.add('hidden');
+          commands.finaleGoTemple();
+        },
+        onFinaleRoam: () => {
+          els.finale.classList.add('hidden'); // 自由漫游：留在全亮地图
         },
         onAnyClick: () => commands.playClick(),
       },

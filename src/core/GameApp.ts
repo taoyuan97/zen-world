@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { EventBus } from './EventBus';
 import type { SceneManager } from './SceneManager';
+import { detectPerfProfile, type PerfProfile } from './perf';
 
 const MAX_DT = 0.1; // 100ms 钳制，防止后台标签页恢复后跳帧（TDD §4.1）
 
@@ -8,6 +9,7 @@ const MAX_DT = 0.1; // 100ms 钳制，防止后台标签页恢复后跳帧（TDD
 export class GameApp {
   readonly renderer: THREE.WebGLRenderer;
   readonly bus = new EventBus();
+  readonly perf: PerfProfile;
 
   private scenes: SceneManager | null = null;
   private lastTime = 0;
@@ -18,11 +20,22 @@ export class GameApp {
   fps = 0;
 
   constructor(canvas: HTMLCanvasElement) {
+    this.perf = detectPerfProfile(); // M4 性能档位（任务 4.6/4.7）
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, this.perf.maxPixelRatio));
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     window.addEventListener('resize', this.onResize);
+
+    // 后台标签页：显式停止 rAF 循环（浏览器本身也会停发，此处兜底并省功耗，任务 4.7）
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        this.renderer.setAnimationLoop(null);
+      } else {
+        this.lastTime = performance.now();
+        this.renderer.setAnimationLoop(this.tick);
+      }
+    });
   }
 
   setScenes(scenes: SceneManager): void {

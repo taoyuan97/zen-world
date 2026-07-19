@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import type { Howl } from 'howler';
 import type { IScene } from '../core/SceneManager';
 import type { EventBus } from '../core/EventBus';
 import type { AssetLoader } from '../core/AssetLoader';
@@ -8,7 +9,9 @@ import type { SaveSystem } from '../systems/SaveSystem';
 import { DialogueSystem } from '../systems/DialogueSystem';
 import { MeditationSession } from '../systems/MeditationSession';
 import { LightingRitual, type RitualStage } from '../systems/LightingRitual';
-import type { AudioSystem } from '../systems/AudioSystem';
+import type { AudioManager } from '../systems/AudioManager';
+import { adjustCueTiming } from '../systems/voiceTiming';
+import type { PerfProfile } from '../core/perf';
 import { TeacherRig } from './meditation/TeacherRig';
 import { buildThemeEnvironment, type ThemeEnvironment } from './meditation/ThemeEnvironment';
 import type { Tooltip } from '../ui/Tooltip';
@@ -26,7 +29,7 @@ export interface ContentLoader {
 /** 场景→UI 的浮层出口（由 main.ts 实现，内部走 UIManager 唯一入口）。 */
 export interface MeditationSceneUI {
   setSceneHudVisible(visible: boolean): void;
-  openDuration(hill: HillConfig): void;
+  openDuration(hill: HillConfig, allowFree: boolean): void;
   closeDuration(): void;
   showMeditationHud(script: MeditationScript): void;
   hideMeditationHud(): void;
@@ -43,13 +46,14 @@ interface MeditationSceneDeps {
   bus: EventBus;
   save: SaveSystem;
   loader: AssetLoader;
-  audio: AudioSystem;
+  audio: AudioManager;
   content: ContentLoader;
   ui: MeditationSceneUI;
   dialogue: DialogueSystem;
   tooltip: Tooltip;
   canvas: HTMLCanvasElement;
   debug: boolean;
+  perf: PerfProfile;
 }
 
 type FlowState = 'empty' | 'intro' | 'idle' | 'dialogue' | 'duration' | 'meditation' | 'ritual' | 'done';
@@ -73,6 +77,7 @@ export class MeditationScene implements IScene, RitualStage {
   private teacher: TeacherRig | null = null;
   private session: MeditationSession | null = null;
   private ritual: LightingRitual;
+  private voiceClips = new Map<number, { howl: Howl; duration: number }>();
   private lights: THREE.Light[] = [];
   private inputLocked = false;
   private orbitAngle = 0;
@@ -97,6 +102,7 @@ export class MeditationScene implements IScene, RitualStage {
     this.hill = hill;
     this.state = 'intro';
     this.inputLocked = true;
+    this.deps.audio.startAmbience(hill.id); // M4：进山环境音渐起
 
     // ---- 主题应用：雾 / 灯光 / 环境 ----
     this.scene3.background = new THREE.Color(hill.env.fog);
@@ -107,7 +113,7 @@ export class MeditationScene implements IScene, RitualStage {
     this.scene3.add(ambient, sun);
     this.lights = [ambient, sun];
 
-    this.env = buildThemeEnvironment(hill);
+    this.env = buildThemeEnvironment(hill, this.deps.perf.particleScale);
     this.scene3.add(this.env.group);
     this.applyLightMix(0); // 初始 unlit 状态（雾/灯光同步降饱和）
 
@@ -149,11 +155,12 @@ export class MeditationScene implements IScene, RitualStage {
       this.deps.bus.on('dialogue:action', ({ action }) => {
         if (action === 'start_meditation' && this.state === 'dialogue') {
           this.state = 'duration';
-          this.deps.ui.openDuration(this.hill!);
+          // M4 B2b：10/10 点亮后开放"不限时"自由冥想
+          this.deps.ui.openDuration(this.hill!, this.deps.save.litCount() >= 10);
         }
       }),
       this.deps.bus.on('meditation:duration-chosen', ({ minutes }) => {
-        if (this.state === 'duration') this.beginMeditation(minutes);
+        if (this.state === 'duration') void this.beginMeditation(minutes);
       }),
       this.deps.bus.on('meditation:duration-cancelled', () => {
         if (this.state === 'duration') this.state = 'idle'; // 回到可再次点击老师的待机
@@ -217,6 +224,7 @@ export class MeditationScene implements IScene, RitualStage {
     if (!this.hill) return;
     this.state = 'dialogue';
     this.deps.tooltip.hide();
+    this.deps.audio.playSfx('ui-open');
 
     // 机位 2：过肩中景
     const camFrom = this.camera3.position.clone();
@@ -245,21 +253,35 @@ export class MeditationScene implements IScene, RitualStage {
       this.state = 'idle';
       return;
     }
+    // M4 古寺彩蛋：10/10 点亮后回访，替换为彩蛋剧本（B2b / GDD §3.2 注）
+    if (this.hill.id === 'temple' && this.deps.save.litCount() >= 10 && script.easterEgg) {
+      script = { ...script, nodes: script.easterEgg };
+    }
     this.deps.dialogue.start(script);
   }
 
-  private beginMeditation(minutes: 5 | 10): void {
+  private async beginMeditation(minutes: 5 | 10 | 'free'): Promise<void> {
     if (!this.hill) return;
     this.deps.ui.closeDuration();
 
+    // 不限时模式复用 10 分钟引导词，cue 播完后静默持续（B2b）
+    const scriptMinutes = minutes === 'free' ? 10 : minutes;
     let script: MeditationScript;
     try {
-      script = this.deps.content.loadMeditation(this.hill, minutes);
+      script = this.deps.content.loadMeditation(this.hill, scriptMinutes);
     } catch (err) {
       console.error('[MeditationScene] 引导脚本校验失败', err);
       this.state = 'idle';
       return;
     }
+
+    // M4 任务 4.2：预载语音，按实际时长微调 cue 时间轴；缺失条目回退纯文字（D1）
+    this.voiceClips = await this.deps.audio.preloadVoice(this.hill.id, scriptMinutes);
+    if (this.state !== 'duration') return; // 预载期间已被打断（退出场景等）
+    const durations = new Map<number, number>();
+    for (const [i, v] of this.voiceClips) durations.set(i, v.duration);
+    const cues = adjustCueTiming(script.cues, durations, script.duration);
+    script = { ...script, cues, duration: minutes === 'free' ? Infinity : script.duration };
 
     this.state = 'meditation';
     this.teacher?.setMeditating(true);
@@ -269,9 +291,19 @@ export class MeditationScene implements IScene, RitualStage {
     // 机位 3：缓慢环绕（D5：day 预设 2°/s）
     this.orbitAngle = Math.atan2(this.camera3.position.x, this.camera3.position.z);
 
+    // 语音与文字 cue 同一时间轴驱动（任务 4.3：结构性偏差 <300ms）
+    this.disposers.push(
+      this.deps.bus.on('meditation:cue', ({ index }) => {
+        const clip = this.voiceClips.get(index);
+        if (clip && this.state === 'meditation') this.deps.audio.playVoice(clip.howl);
+      }),
+      this.deps.bus.on('meditation:paused-auto', () => this.deps.audio.stopVoice()),
+    );
+
     this.session = new MeditationSession(this.deps.bus, this.hill.id);
     this.session.start(script, {
       debug: this.deps.debug,
+      free: minutes === 'free',
       onComplete: () => void this.onSessionComplete(script.duration),
     });
   }
@@ -281,6 +313,7 @@ export class MeditationScene implements IScene, RitualStage {
     this.state = 'ritual';
     this.inputLocked = true;
     this.deps.ui.hideMeditationHud();
+    this.deps.audio.stopVoice();
     this.teacher?.setMeditating(false);
 
     // 存档：点亮 + 累计（重复冥想走 addSession）
@@ -319,12 +352,14 @@ export class MeditationScene implements IScene, RitualStage {
       totalSeconds: hillSave.totalSeconds,
       blessing,
     });
+    this.deps.audio.playSfx('complete');
   }
 
   private abortMeditation(): void {
     this.session?.abort();
     this.session = null;
     this.deps.ui.hideMeditationHud();
+    this.deps.audio.stopVoice();
     this.teacher?.setMeditating(false);
     this.deps.bus.emit('meditation:aborted', {});
   }
@@ -409,6 +444,9 @@ export class MeditationScene implements IScene, RitualStage {
     this.deps.ui.hideMeditationHud();
     this.deps.ui.closeDuration();
     this.deps.ui.setSceneHudVisible(false);
+    this.deps.audio.stopVoice();
+    this.deps.audio.stopAmbience(); // M4：出山环境音渐弱
+    this.voiceClips.clear();
   }
 
   dispose(): void {
