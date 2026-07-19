@@ -1,0 +1,102 @@
+[
+  {
+    "id": "bamboo",
+    "name": "青竹林",
+    "mapPosition": [-45, 0, -35],
+    "palette": { "primary": "#7BA05B", "accent1": "#4A6B3A", "accent2": "#CFE3C0" },
+    "env": { "fog": "#B8CDB0", "sky": "day", "decor": ["bamboo", "stone_lantern"], "particles": "leaves" },
+    "teacher": { "name": "竹心", "color": "#4A6B3A", "prop": "bamboo_staff" },
+    "dialogue": "dialogues/bamboo.json",
+    "meditations": { "5": "meditations/bamboo.5min.json", "10": "meditations/bamboo.10min.json" }
+  },
+  {
+    "id": "snowpeak",
+    "name": "白雪顶",
+    "mapPosition": [40, 0, -50],
+    "palette": { "primary": "#E8EEF2", "accent1": "#8FA6B8", "accent2": "#FFFFFF" },
+    "env": { "fog": "#D8E2EA", "sky": "day", "decor": ["pine", "rock"], "particles": "snow" },
+    "teacher": { "name": "雪寂", "color": "#8FA6B8", "prop": "prayer_beads" },
+    "dialogue": "dialogues/snowpeak.json",
+    "meditations": { "5": "meditations/snowpeak.5min.json", "10": "meditations/snowpeak.10min.json" }
+  },
+  {
+    "id": "lakeside",
+    "name": "镜湖畔",
+    "mapPosition": [0, 0, 30],
+    "palette": { "primary": "#6FA8C7", "accent1": "#3E6E8E", "accent2": "#CFE8F5" },
+    "env": { "fog": "#B9D2DE", "sky": "day", "decor": ["reed", "stone_lantern"], "particles": "fireflies" },
+    "teacher": { "name": "涟漪", "color": "#3E6E8E", "prop": "tea_bowl" },
+    "dialogue": "dialogues/lakeside.json",
+    "meditations": { "5": "meditations/lakeside.5min.json", "10": "meditations/lakeside.10min.json" }
+  },
+  {
+    "id": "starfield",
+    "name": "星空原",
+    "mapPosition": [55, 0, 10],
+    "palette": { "primary": "#3B4A6B", "accent1": "#232D45", "accent2": "#9FB4E8" },
+    "env": { "fog": "#2A3350", "sky": "night", "decor": ["rock", "crystal"], "particles": "fireflies" },
+    "teacher": { "name": "星野", "color": "#232D45", "prop": "star_chart" },
+    "dialogue": "dialogues/starfield.json",
+    "meditations": { "5": "meditations/starfield.5min.json", "10": "meditations/starfield.10min.json" }
+  },
+  {
+    "id": "desert",
+    "name": "寂静沙漠",
+    "mapPosition": [-60, 0, 15],
+    "palette": { "primary": "#D9B380", "accent1": "#A67C52", "accent2": "#F2DFC0" },
+    "env": { "fog": "#E3CFA8", "sky": "sunset", "decor": ["dry_tree", "rock"], "particles": "none" },
+    "teacher": { "name": "无尘", "color": "#A67C52", "prop": "wooden_fish" },
+    "dialogue": "dialogues/desert.json",
+    "meditations": { "5": "meditations/desert.5min.json", "10": "meditations/desert.10min.json" }
+  },
+  {
+    "id": "sakura",
+    "name": "樱花坡",
+    "mapPosition": [25, 0, 45],
+    "palette": { "primary": "#E8AEBF", "accent1": "#B5728A", "accent2": "#FBE3EA" },
+    "env": { "fog": "#EFD3DA", "sky": "day", "decor": ["sakura_tree", "stone_lantern"], "particles": "petals" },
+    "teacher": { "name": "花见", "color": "#B5728A", "prop": "paper_umbrella" },
+    "dialogue": "dialogues/sakura.json",
+    "meditations": { "5": "meditations/sakura.5min.json", "10": "meditations/sakura.10min.json" }
+  },
+  {
+    "id": "mistvalley",
+    "name": "雾谷",
+    "mapPosition": [-20, 0, 55],
+    "palette": { "primary": "#A8B0B5", "accent1": "#6E787E", "accent2": "#DDE3E6" },
+    "env": { "fog": "#C3CBCF", "sky": "day", "decor": ["pine", "rock"], "particles": "none" },
+    "teacher": { "name": "雾隐", "color": "#6E787E", "prop": "walking_stick" },
+    "dialogue": "dialogues/mistvalley.json",
+    "meditations": { "5": "meditations/mistvalley.5min.json", "10": "meditations/mistvalley.10min.json" }
+  },
+  {
+    "id": "grassland",
+    "name": "风草原",
+    "mapPosition": [-55, 0, -5],
+    "palette": { "primary": "#8FBC6E", "accent1": "#5E8A45", "accent2": "#DCEBC8" },
+    "env": { "fog": "#C2D8AC", "sky": "day", "decor": ["grass_tuft", "rock"], "particles": "leaves" },
+    "teacher": { "name": "风行", "color": "#5E8A45", "prop": "reed_flute" },
+    "dialogue": "dialogues/grassland.json",
+    "meditations": { "5": "meditations/grassland.5min.json", "10": "meditations/grassland.10min.json" }
+  },
+  {
+    "id": "hotspring",
+    "name": "温泉谷",
+    "mapPosition": [60, 0, -25],
+    "palette": { "primary": "#D98850", "accent1": "#9E5F33", "accent2": "#F5CFA8" },
+    "env": { "fog": "#E8C4A2", "sky": "sunset", "decor": ["rock", "steam_vent"], "particles": "steam" },
+    "teacher": { "name": "暖阳", "color": "#9E5F33", "prop": "wooden_ladle" },
+    "dialogue": "dialogues/hotspring.json",
+    "meditations": { "5": "meditations/hotspring.5min.json", "10": "meditations/hotspring.10min.json" }
+  },
+  {
+    "id": "temple",
+    "name": "古寺",
+    "mapPosition": [-5, 0, -60],
+    "palette": { "primary": "#C9A227", "accent1": "#8A6D1C", "accent2": "#EFDFA8" },
+    "env": { "fog": "#D8C89A", "sky": "sunset", "decor": ["pagoda", "banner"], "particles": "fireflies" },
+    "teacher": { "name": "了然", "color": "#8A6D1C", "prop": "temple_bell" },
+    "dialogue": "dialogues/temple.json",
+    "meditations": { "5": "meditations/temple.5min.json", "10": "meditations/temple.10min.json" }
+  }
+]

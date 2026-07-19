@@ -1,0 +1,35 @@
+{
+  "hillId": "bamboo",
+  "teacher": "竹心",
+  "blessing": "竹子把这一段安静，编进了新的竹节里。",
+  "nodes": [
+    {
+      "id": "greeting",
+      "text": "你来了。竹子不说话的时候，其实是在听风。",
+      "next": "q1"
+    },
+    {
+      "id": "q1",
+      "text": "今天，你的心像什么？",
+      "options": [
+        { "label": "像被风吹乱的竹叶", "reply": "r1" },
+        { "label": "像一潭静水", "reply": "r2" }
+      ]
+    },
+    {
+      "id": "r1",
+      "text": "那正好。风停不停不重要，我们只需要看见叶子在动。",
+      "next": "invite"
+    },
+    {
+      "id": "r2",
+      "text": "静水也会照见云影。坐一会儿，看看它会照见什么。",
+      "next": "invite"
+    },
+    {
+      "id": "invite",
+      "text": "来吧，坐下来。我们一起，只关注这一口呼吸。",
+      "action": "start_meditation"
+    }
+  ]
+}

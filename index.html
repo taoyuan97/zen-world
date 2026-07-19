@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>禅境世界 Zen World</title>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene"></canvas>
+    </div>
+    <div id="ui">
+      <!-- 地图 HUD -->
+      <div id="map-hud" class="hidden">
+        <div id="progress-badge">已点亮 0/10</div>
+        <button id="mute-btn" type="button" aria-label="静音开关">🔊</button>
+        <div id="hint-bar">拖拽旋转 · 滚轮缩放 · 点击小山进入</div>
+        <div id="onboarding" class="hidden">欢迎来到禅境世界 —— 拖拽旋转视角，滚轮缩放，点击一座小山开始你的第一次冥想</div>
+      </div>
+      <!-- 山名 / 老师浮签 -->
+      <div id="tooltip" class="hidden"></div>
+      <!-- 冥想场景 HUD（冥想开始前常驻） -->
+      <div id="scene-hud" class="hidden">
+        <button id="scene-back" type="button">← 返回地图</button>
+        <button id="scene-mute-btn" type="button" aria-label="静音开关">🔊</button>
+        <div id="scene-hint">点击老师，开始交谈</div>
+      </div>
+      <!-- 对话框 -->
+      <div id="dialogue" class="hidden">
+        <div id="dialogue-speaker"></div>
+        <div id="dialogue-text"></div>
+        <div id="dialogue-hint" class="hidden">点击 / 空格 继续 ▸</div>
+        <div id="dialogue-options" class="hidden"></div>
+      </div>
+      <!-- 冥想 HUD -->
+      <div id="med-hud" class="hidden">
+        <div id="med-ring-wrap">
+          <svg id="med-ring" viewBox="0 0 120 120" width="120" height="120" aria-hidden="true">
+            <circle id="med-ring-bg" cx="60" cy="60" r="54" />
+            <circle id="med-ring-fg" cx="60" cy="60" r="54" />
+          </svg>
+          <div id="med-time">5:00</div>
+        </div>
+        <div id="med-breath" aria-hidden="true"></div>
+        <div id="med-cue"></div>
+        <button id="med-hide-btn" type="button">隐藏界面</button>
+        <button id="med-show-btn" type="button" class="hidden" aria-label="显示界面">●</button>
+        <div id="med-paused-mask" class="hidden">
+          <p>已为你暂停</p>
+          <button id="med-resume-btn" type="button">继续冥想</button>
+        </div>
+      </div>
+      <!-- 时长选择 -->
+      <div id="duration-panel" class="panel hidden">
+        <h2>选择时长</h2>
+        <p class="panel-sub"></p>
+        <div class="panel-actions">
+          <button id="duration-5" type="button">5 分钟</button>
+          <button id="duration-10" type="button">10 分钟</button>
+        </div>
+        <button id="duration-cancel" type="button" class="panel-link">再坐一会儿</button>
+      </div>
+      <!-- 完成页 -->
+      <div id="completion" class="panel hidden">
+        <h2>冥想完成</h2>
+        <p id="completion-session"></p>
+        <p id="completion-total"></p>
+        <p id="completion-blessing"></p>
+        <div class="panel-actions">
+          <button id="completion-back" type="button">返回地图</button>
+        </div>
+      </div>
+      <!-- 中断确认 -->
+      <div id="abort-confirm" class="panel hidden">
+        <h2>要离开吗？</h2>
+        <p class="panel-sub">本次冥想不会计入完成。山会一直等你。</p>
+        <div class="panel-actions">
+          <button id="abort-yes" type="button">离开</button>
+          <button id="abort-no" type="button">继续冥想</button>
+        </div>
+      </div>
+      <!-- 调试面板（?debug 开启） -->
+      <div id="debug-panel" class="hidden"></div>
+      <!-- 场景切换过渡遮罩 -->
+      <div id="transition-overlay"></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
