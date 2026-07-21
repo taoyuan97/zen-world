@@ -21,6 +21,8 @@ export interface HillTeacher {
   name: string;
   color: string;
   prop: string;
+  /** 可选自定义老师 GLB 模型路径（相对 public 根目录）。缺省使用默认低模人形。 */
+  model?: string;
 }
 
 export interface HillConfig {

@@ -95,7 +95,7 @@
     "mapPosition": [-5, 0, -60],
     "palette": { "primary": "#C9A227", "accent1": "#8A6D1C", "accent2": "#EFDFA8" },
     "env": { "fog": "#D8C89A", "sky": "sunset", "decor": ["pagoda", "banner"], "particles": "fireflies" },
-    "teacher": { "name": "了然", "color": "#8A6D1C", "prop": "temple_bell" },
+    "teacher": { "name": "了然", "color": "#8A6D1C", "prop": "temple_bell", "model": "./assets/models/huangniu-zen-master.glb" },
     "dialogue": "dialogues/temple.json",
     "meditations": { "5": "meditations/temple.5min.json", "10": "meditations/temple.10min.json" }
   }

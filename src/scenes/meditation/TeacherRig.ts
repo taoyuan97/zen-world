@@ -4,7 +4,7 @@ import { Ease, Tweens } from '../../core/Tween';
 import type { HillConfig } from '../../data/types';
 
 const TEACHER_MODEL_URL = './assets/models/character-human.glb';
-const TARGET_HEIGHT = 1.7; // 归一化目标高度（米）
+const TARGET_HEIGHT = 1.7; // 默认站立人形归一化目标高度（米）
 const CUSHION_RADIUS = 0.85;
 const CUSHION_HEIGHT = 0.28;
 const NOD_MIN_INTERVAL = 6;
@@ -13,7 +13,8 @@ const MEDITATION_AMPLITUDE = 0.5; // 冥想中动作幅度减半（TDD §5.2）
 
 /**
  * 老师装配（决策 D1 / TDD §5.2）：
- * - 优先加载 Kenney CC0 站立人形 GLB，包围盒归一化；配程序化蒲团遮挡下半身；
+ * - 默认加载 Kenney CC0 站立人形 GLB，包围盒归一化；配程序化蒲团遮挡下半身；
+ * - 若 hills.json 中 teacher.model 有指定，则加载自定义 GLB，保持原始尺寸与材质；
  * - 加载失败回退程序化拼装（胶囊身体 + 球头 + 斗笠）；
  * - 程序化待机：呼吸 scale + 随机点头 Tween；冥想中幅度减半；
  * - teacher.color 应用为主衣色；teacher.prop 程序化配饰（M3-D3：固定偏移摆放，不做手部挂接）。
@@ -30,6 +31,7 @@ export class TeacherRig {
   private nextNodAt = this.randomNodDelay();
   private nodding = false;
   private disposables: Array<{ dispose(): void }> = [];
+  private customModel = false;
 
   constructor(
     private loader: AssetLoader,
@@ -38,8 +40,58 @@ export class TeacherRig {
 
   async build(): Promise<void> {
     const themeColor = new THREE.Color(this.config.teacher.color);
+    const modelUrl = this.config.teacher.model ?? TEACHER_MODEL_URL;
+    this.customModel = !!this.config.teacher.model;
 
-    // 蒲团（程序化，遮挡下半身 —— D1）
+    let model: THREE.Group | null = null;
+    try {
+      model = await this.loader.loadModel(modelUrl);
+    } catch {
+      console.warn(`[TeacherRig] ${this.customModel ? '自定义' : '默认'} GLB 加载失败，回退程序化拼装老师`);
+    }
+
+    if (model) {
+      if (this.customModel) {
+        // 自定义模型：保持原始尺寸、原始材质，直接坐地（古寺 zen-master 为盘坐姿态）
+        this.group.add(model);
+        this.body = model;
+        this.head = model;
+        this.baseBodyScaleY = model.scale.y;
+      } else {
+        // 默认站立人形：归一化 + 主题染色 + 蒲团遮挡
+        this.buildCushion(themeColor);
+        normalizeModel(model, TARGET_HEIGHT);
+        model.traverse((obj) => {
+          if (obj instanceof THREE.Mesh) {
+            const old = obj.material as THREE.MeshStandardMaterial;
+            const lambert = new THREE.MeshLambertMaterial({
+              color: old.color ? themeColor.clone().lerp(old.color, 0.35) : themeColor,
+              flatShading: true,
+            });
+            obj.material = lambert;
+            this.track(obj.geometry as THREE.BufferGeometry, lambert);
+            if (old.map) this.track(old.map);
+            old.dispose();
+          }
+        });
+        // 站立人形坐到蒲团上：下半身没入蒲团，视觉为盘坐（D1 遮挡方案）
+        model.position.y = CUSHION_HEIGHT - 0.32;
+        this.group.add(model);
+        this.body = model;
+        this.baseBodyScaleY = model.scale.y; // 归一化后的缩放作为呼吸基准
+        this.head = model; // GLB 无拆分头节点，点头动作用整体轻俯仰代替
+      }
+    } else {
+      // 加载失败回退程序化胶囊老师：按默认姿态处理配饰
+      this.customModel = false;
+      this.buildProcedural(themeColor);
+    }
+
+    this.buildProp();
+  }
+
+  /** 创建程序化蒲团并登记释放。 */
+  private buildCushion(themeColor: THREE.Color): void {
     const cushionGeo = new THREE.CylinderGeometry(CUSHION_RADIUS, CUSHION_RADIUS * 1.12, CUSHION_HEIGHT, 12);
     const cushionMat = new THREE.MeshLambertMaterial({
       color: themeColor.clone().multiplyScalar(0.55),
@@ -49,41 +101,6 @@ export class TeacherRig {
     cushion.position.y = CUSHION_HEIGHT / 2;
     this.group.add(cushion);
     this.track(cushionGeo, cushionMat);
-
-    let model: THREE.Group | null = null;
-    try {
-      model = await this.loader.loadModel(TEACHER_MODEL_URL);
-    } catch {
-      console.warn('[TeacherRig] GLB 加载失败，回退程序化拼装老师');
-    }
-
-    if (model) {
-      normalizeModel(model, TARGET_HEIGHT);
-      // 应用主题主衣色：遍历材质向 teacher.color 染色（原 GLB 材质即刻释放，防 GPU 泄漏）
-      model.traverse((obj) => {
-        if (obj instanceof THREE.Mesh) {
-          const old = obj.material as THREE.MeshStandardMaterial;
-          const lambert = new THREE.MeshLambertMaterial({
-            color: old.color ? themeColor.clone().lerp(old.color, 0.35) : themeColor,
-            flatShading: true,
-          });
-          obj.material = lambert;
-          this.track(obj.geometry as THREE.BufferGeometry, lambert);
-          if (old.map) this.track(old.map);
-          old.dispose();
-        }
-      });
-      // 站立人形坐到蒲团上：下半身没入蒲团，视觉为盘坐（D1 遮挡方案）
-      model.position.y = CUSHION_HEIGHT - 0.32;
-      this.group.add(model);
-      this.body = model;
-      this.baseBodyScaleY = model.scale.y; // 归一化后的缩放作为呼吸基准
-      this.head = model; // GLB 无拆分头节点，点头动作用整体轻俯仰代替
-    } else {
-      this.buildProcedural(themeColor);
-    }
-
-    this.buildProp();
   }
 
   /** 创建配饰小件并登记释放（局部辅助）。 */
@@ -158,9 +175,17 @@ export class TeacherRig {
         this.propMesh(new THREE.SphereGeometry(0.065, 8, 6), '#8a5f30', 0.68, 0.06, 0.5).scale.set(1, 0.55, 1);
         break;
       case 'temple_bell': // 寺钟（了然）：身前小座铜钟
-        this.propMesh(new THREE.CylinderGeometry(0.22, 0.24, 0.06, 10), '#5e4a36', -0.65, 0.03, 0.85);
-        this.propMesh(new THREE.CylinderGeometry(0.13, 0.19, 0.26, 10), '#b08a3e', -0.65, 0.2, 0.85);
-        this.propMesh(new THREE.TorusGeometry(0.045, 0.012, 6, 10), '#8a6a2e', -0.65, 0.35, 0.85);
+        if (this.customModel) {
+          // 盘坐 zen-master：钟置于身前地面，尺寸与姿态匹配
+          this.propMesh(new THREE.CylinderGeometry(0.22, 0.24, 0.045, 10), '#5e4a36', 0, 0.025, 0.55);
+          this.propMesh(new THREE.CylinderGeometry(0.13, 0.19, 0.26, 10), '#b08a3e', 0, 0.2, 0.55).scale.set(1, 0.78, 1.12);
+          this.propMesh(new THREE.TorusGeometry(0.045, 0.012, 6, 10), '#8a6a2e', 0, 0.35, 0.55);
+        } else {
+          // 默认站立人形 + 蒲团：钟置于蒲团前侧
+          this.propMesh(new THREE.CylinderGeometry(0.22, 0.24, 0.06, 10), '#5e4a36', -0.65, 0.03, 0.85);
+          this.propMesh(new THREE.CylinderGeometry(0.13, 0.19, 0.26, 10), '#b08a3e', -0.65, 0.2, 0.85);
+          this.propMesh(new THREE.TorusGeometry(0.045, 0.012, 6, 10), '#8a6a2e', -0.65, 0.35, 0.85);
+        }
         break;
       default:
         console.warn(`[TeacherRig] 未知配饰 prop: ${this.config.teacher.prop}`);
@@ -169,6 +194,8 @@ export class TeacherRig {
 
   /** 程序化回退：胶囊身体 + 球头 + 斗笠（TDD §5.2 回退方案）。 */
   private buildProcedural(themeColor: THREE.Color): void {
+    this.buildCushion(themeColor);
+
     const bodyGeo = new THREE.CapsuleGeometry(0.34, 0.72, 4, 10);
     const bodyMat = new THREE.MeshLambertMaterial({ color: themeColor, flatShading: true });
     const body = new THREE.Mesh(bodyGeo, bodyMat);
